@@ -1,0 +1,357 @@
+/**{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+
+
+    background-color: white;
+}*/
+
+#container-prodotti{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+     height: 100vh;
+    background-color: white;
+    margin-bottom: 170px;
+}
+aside{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 20%;
+    align-items: center;
+
+    background-color: bl;
+    text-align: left;
+}
+aside form{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 55%;
+    margin-left: 10px;
+    margin-top: 100px;
+    width: 90%;
+    background-color: rgba(166,178,190,0.98);
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+}
+form .filtraggio{
+    width: 100%;
+    flex-basis: 24%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: inherit;
+}
+.filtraggio label{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+form.products input{
+    /*  height: 30%;*/
+    flex-basis: 30%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding: 5px;
+    margin-left: 5px;
+}
+.filtraggioPrezzo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+.filtraggioPrezzo input{
+    width: 10%;
+    padding: 5px;
+    margin: 10px;
+}
+/*.prezzo-filter{
+    padding: 5px;
+   flex-basis: 50%;
+}*/
+form.products input[type="submit"]{
+    flex-basis: 10%;
+    width: 60%;
+    margin-top: 15px;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 0%;
+    cursor: pointer;
+}
+aside a{
+    margin-left: 10px;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    font-size: 24px;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+}
+aside ul{
+    margin-top: 10px;
+    width: 100%;
+    background-color: white;
+    display: block;
+    float: left;
+}
+aside ul li{
+    display: block;
+    text-align: left;
+    padding: 8px;
+    background-color: white;
+    margin-left: 5px;
+}
+main{
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    background-color: lightsalmon;
+    width:80% ;
+}
+main .filter{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 10%;
+    background-color: white;
+    align-items: center;
+    justify-content: flex-end;
+}
+.filter select{
+    background-color: white;
+    float: right;
+    height: 50%;
+    outline: none;
+    border: none;
+    margin-right: 35px;
+}
+#ordinamento option{
+    background-color: white;
+    padding: 6px;
+    border: none;
+    width: 900px;
+    height: 10%;
+    font-size: 19px;
+}
+/*main .prodotti{
+    display: inline-flex;
+    width: 100%;
+    background-color: yellow;
+}*/
+
+main .prodotti{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+    background-color: white;
+}
+.prodotti article{
+    /* width: 30%;*/
+    /*height: 30vh;*/
+
+    margin:18px;
+    flex-basis: 25%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.prodotti article figure{
+    display: block;
+    position: relative;
+    margin: 8px auto;
+    width: 90%;
+    background-color: white;
+}
+.prodotti article figure img{
+    display: flex;
+    margin: auto;
+    max-width: 80%;
+}
+.prodotti article figure figcaption{
+    text-align: center;
+    display: block;
+    padding: 3px;
+    background-color: white;
+    border-bottom: 1px solid lightgrey;
+}
+figcaption a{
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+}
+figcaption a:hover{
+    font-size: 17px;
+    color: skyblue ;
+}
+.prodotti article .aggiungi{
+    width: 80%;
+    height: 30px;
+    display: block;
+    margin:6px  auto;
+    text-align: center;
+    background-color: white;
+    border-top: 1px solid li;
+    color: black;
+}
+.aggiungi span.iconaCarrello{
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    height: 100%;
+    float: left;
+    background-color: white;
+    border: 1px solid lightgrey;
+}
+span.iconaCarrello i{
+    margin:auto 0;
+
+}
+.aggiungi span.btn{
+    visibility: hidden;
+    float: left;
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    text-decoration: none;
+    transition: width .9s;
+
+}
+span.btn button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 14px;
+    color: whitesmoke;
+    border-bottom-right-radius: 11px;
+    border-top-right-radius: 11px;
+    background-color: limegreen;
+    background-image: linear-gradient( limegreen,lawngreen);
+    box-shadow: 0px 5px 10px rgb(92, 218, 42);
+    animation: bottoneLampeggiante;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+@keyframes bottoneLampeggiante {
+    from {opacity: 0.2;}
+    to {opacity: 0.8;}
+}
+@keyframes bottoneLampeggiante {
+    from {width: 0%;}
+    to {width: 100%;}
+}
+.aggiungi span.iconaCarrello:hover{
+    cursor:pointer;
+    opacity: 0.4;
+}
+.aggiungi span.iconaCarrello:hover i{
+    color: limegreen;
+}
+span.iconaCarrello:hover + span.btn{
+    visibility: visible;
+}
+
+
+/*CSS PAGINATION*/
+.center-pagination{
+    display: flex;
+    margin-top: 10px;
+    text-align: center;
+    height: 50px;
+
+}
+.pagination{
+    display: flex;
+}
+
+.center-pagination a{
+    color: black;
+    text-decoration: none;
+    padding : 5px 15px;
+    transition: background-color .4s;
+    height: 70%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    margin: 0px 4px;
+}
+
+.center-pagination a:hover{
+    background-color: lawngreen;
+
+}
+
+/*@media  screen and (max-width:600px) {
+    aside{
+        display: none;
+    }
+    main{
+        width: 100%;
+    }
+    .filter{
+        flex-basis: 100%;
+    }
+    .prodotti{
+        flex-wrap: nowrap;
+    }
+    .prodotti article{
+        background-color: saddlebrown;
+        flex-basis: 50%;
+    }
+}
+*/
+@media screen and (max-width:550px) {
+    #container-prodotti{
+        flex-direction: column;
+        width: 100%;
+        background-color: salmon;
+        margin-bottom: 1880px;
+
+    }
+    /*aside{
+        display: none;
+    }*/
+    aside{
+
+        width: 100%;
+        height: 40%;
+        background-color: white;
+    }
+    aside form{
+        width: 80%;
+        padding: 5px;
+        font-size: 15px;
+    }
+    .filtraggio label{
+        font-size: 15px;
+    }
+    main{
+        width: 100%;
+
+        background-color: rgb(92, 218, 42);
+    }
+    .filter{
+        background-color: red;
+        flex-basis: 100%;
+    }
+
+    .prodotti article{
+        flex-basis: 80%;
+    }
+}

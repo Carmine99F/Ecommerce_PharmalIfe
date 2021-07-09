@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    padding: 10px;
+    color: #009fe3;
+}
+form.insert{
+    margin: 50px auto 50px;
+    width: 40%;
+}
+form.insert fieldset{
+    background-color: white;
+    display: flex;
+    border: 1px solid lightgray;
+
+    border-radius: 15px;
+    flex-direction: column;
+}
+form.insert legend{
+
+    text-align: center;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: limegreen;
+    color: white;
+    padding: 10px;
+}
+form.insert fieldset .campo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1p solid black;
+    padding: 8px;
+    background-color: white;
+}
+.campo input,textarea{
+    width: 50%;
+    outline: none;
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+
+
+
+
+@media screen and (max-width:550px) {
+
+    form.insert{
+        width: 90%;
+    }
+    .campo input,textarea{
+        width: 70%;
+    }
+
+}
