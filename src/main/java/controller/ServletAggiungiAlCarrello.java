@@ -24,11 +24,11 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         Prodotto prodotto= prodottoDAO.cercaProdotto(idProdotto);
         if(utente!=null){
           Carrello carrello=(Carrello) session.getAttribute("carrello");
-
             if(carrello==null){
-                carrello.addProdotto(prodotto);
-                carrello.setUtente(utente);
-                session.setAttribute("carrello",carrello);
+                Carrello carrello1= new Carrello();
+                carrello1.addProdotto(prodotto);
+                carrello1.setUtente(utente);
+                session.setAttribute("carrello",carrello1);
             }else {
                 carrello.addProdotto(prodotto);
             }

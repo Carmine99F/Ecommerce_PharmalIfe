@@ -13,9 +13,9 @@ body{
     margin-top: 20px;
     display: flex;
     flex-direction: row;
-     height: 100vh;
+     height: 100%;
     background-color: white;
-    margin-bottom: 170px;
+    margin-bottom: 400px;
 }
 aside{
     display: flex;

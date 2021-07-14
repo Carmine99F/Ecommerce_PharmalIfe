@@ -68,7 +68,7 @@
             <article>
                 <figure>
                     <a href="ServletSchedaProdotto?value=<%=p.getCodiceProdotto()%>">
-                        <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="Oki" height="150" width="150">
+                        <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="Oki" height="200" width="200">
                     </a>
                     <figcaption>
                         <a href=""><%=p.getNome()%> </a>

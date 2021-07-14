@@ -86,7 +86,7 @@ public class Utente {
     public void setPassword(String password){
         this.password=password;
     }
-    public void criptPassword( String password) {
+    public void criptPassword(String password) {
 
       try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
