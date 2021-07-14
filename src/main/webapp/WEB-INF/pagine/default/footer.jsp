@@ -7,8 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
-
 <footer>
 <div class="padre-footer">
     <div class="logoFooter">
@@ -50,12 +48,12 @@
     <div class="menuScorrimento">
         <a href="javascript:void(0)"  onclick="mostraMenuINFORMAZIONI1()" style="text-align: center;color: #009fe3; margin-left: 2px; float: left">ACCOUNT<i class="fas fa-chevron-down" style="float: left"></i> </a>
         <div class="dropdown-content-footer">
-            <a href="">Accedi</a>
+            <a href="ServletLink?scelta=login">Accedi</a>
             <a href="ServletLink?scelta=mioAccount">Il Mio Account</a>
             <a href="">I Miei Ordini</a>
             <a href="">I Miei Indirizzi</a>
             <a href="">Controlla Ordine Ospite</a>
-            <a href="">Registrati</a>
+            <a href="ServletLink?scelta=iscriviti">Registrati</a>
         </div>
     </div>
 

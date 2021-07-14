@@ -1,0 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 90%;
+    height: 80vh;
+    background-color: white;
+    margin: 80px auto 0;
+}
+.immagine{
+    display: flex;
+    flex-basis: 50%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.immagine img{
+    width: 60%;
+    cursor: zoom-in;
+}
+.immagine img:hover{
+    transform: scale(1.3);
+    transition-duration: 2s;
+
+
+}
+.infoProdotto{
+    display: flex;
+    flex-basis: 50%;/*setta la dimensione in base alla direzione se è row o colum*/
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    padding: 10px;
+}
+.infoProdotto h2{
+    text-align: center;
+    font-size: 30px;
+}
+.infoProdotto .bottoni{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-basis: 90%;*/
+    align-items: center;
+    justify-content: center;
+    height: 8%;
+    background-color: white;
+    /* border:2px solid lightgray;*/
+    padding: 0px;
+}
+.bottoni .quantita{
+    display: flex;
+
+    background-color: white;
+    flex-basis: 20%;
+    height: 30px;
+    border: 2px solid limegreen;
+    border-radius: 5px;
+
+}
+.quantita input{
+    outline: none;
+    border:none;
+    width: 50%;
+    text-align: center;
+
+}
+.quantita button{
+    width: 25%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: white;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.aggiungiAlCarrello{
+    width: 35%;
+    height:100%;
+    margin-left: 10px;
+    background-color:limegreen;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition:  .6s;
+}
+.aggiungiAlCarrello:hover{
+    background-color: white;
+    color: limegreen;
+    border: 1px solid lightgrey;
+}
+.bottoni a{
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+    height: 100%;
+    width: 8%;
+    background-color: white;
+
+}
+.bottoni a:hover{
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+a i{
+    text-align: center;
+    color: limegreen;
+    transition:  .5s;
+}
+a i:hover{
+    color: red;
+
+}
+
+.infoProdotto .descrizione{
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+    margin-top: 55px;
+    flex-basis: 90%;
+    background-color: inherit;
+    height: 40%;
+}
+.descrizione .note{
+    width: 70%;
+    font-size: 20px;
+    background-color: inherit;
+}
+.note fieldset{
+    padding: 15px;
+    border-radius: 10px;
+}
+legend{
+    text-align: center;
+    padding: 9px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+.descrizione .card{
+    margin-top: 20px;
+    width: 70%;
+
+}
+.card i{
+    font-size: 30px;
+}
+
+
+
+
+@media screen and (max-width:550px) {
+
+    .container{
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+
+    }
+    .infoProdotto{
+        flex-basis: 100%;
+        margin-top: 50px;
+
+    }
+    .bottoni{
+        flex-basis: 100%;
+        height: 100%;
+        background-color: greenyellow;
+    }
+    .aggiungiAlCarrello{
+        height: 20%;
+    }
+    .descrizione{
+        background-color: indianred;
+        margin-top: 10px;
+    }
+}

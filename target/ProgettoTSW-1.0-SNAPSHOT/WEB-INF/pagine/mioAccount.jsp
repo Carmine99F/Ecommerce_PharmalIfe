@@ -14,6 +14,7 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleMioAccount"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
+    <script src="js/header.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
@@ -24,7 +25,7 @@
 <% } %>
 <div class="flex-container">
     <div class="flex-item">
-        <a href=""><i class="fas fa-user-circle" style="background-color: white" ></i></a><br>
+        <a href="ServletLink?scelta=info"><i class="fas fa-user-circle" style="background-color: white" ></i></a><br>
         <p>INFORMAZIONE</p>
     </div>
 

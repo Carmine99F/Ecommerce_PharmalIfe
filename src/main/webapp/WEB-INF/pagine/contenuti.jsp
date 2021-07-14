@@ -10,7 +10,7 @@
 <%ArrayList<Categoria> categorie=(ArrayList<Categoria>) application.getAttribute("categorie"); %>
 
 
-<div id="slider">
+<!--<div id="slider">
    <div class="img_slide">
         <img src="./immagini/unnamed.jpg">
     </div>
@@ -22,6 +22,17 @@
     </div>
     <a class="prev" onmouseover="immaginePrecedente()">  <i class="fas fa-arrow-circle-left"> </i> </a>
     <a class="next" onclick="immagineSuccessiva()"> <i class="fas fa-arrow-circle-right"> </i> </a>
+</div>-->
+
+<div id="slider">
+    <figure>
+        <img src="./immaginiSlider/sustenium_plus_desk-min.jpeg" alt="immagine">
+        <img src="./immaginiSlider/swisse_desk-min.jpeg" alt="immagine">
+        <img src="./immaginiSlider/swisse_integratore-min.jpeg" alt="immagine">
+        <img src="./immaginiSlider/systane_desk-min.jpeg" alt="immagine">
+        <img src="./immaginiSlider/desk-2964x700-min.jpeg" alt="immagine">
+
+    </figure>
 </div>
 
 <div class="cat">
@@ -29,11 +40,11 @@
     <h5 class="sub-cat">Scopri i migliori prodotti di pHarmaLife in base alle tue esigenze...</h5>
     <hr>
     <div class="listaCategorie">
-        <% for(Categoria c : categorie){  %>
+        <% for(Categoria c : categorie){  if(c.getRoot()==0){ %>
         <div class="categoria" >
             <%=c.getNomeCategoria()%>
         </div>
-        <% } %>
+        <% } } %>
        <!-- <div class="categoria" >
             Farmaci da Banco
         </div>

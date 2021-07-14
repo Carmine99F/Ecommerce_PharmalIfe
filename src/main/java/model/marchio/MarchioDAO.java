@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class MarchioDAO implements MarchioDAOMethod {
     @Override
-    public Optional<Marchio> cercaMarchio(String nomeMarchio) {
+    public Marchio cercaMarchio(String nomeMarchio) {
         try(Connection connection= ConPool.getConnection()){
 
             PreparedStatement ps;
@@ -22,12 +22,12 @@ public class MarchioDAO implements MarchioDAOMethod {
             if (rs.next()){
                 Marchio marchio = new Marchio();
                 marchio.setNomeMarchio(rs.getString(1));
-                return Optional.of(marchio);
+                return marchio;
             }
         }catch (SQLException sqlException){
-
+            throw  new RuntimeException(sqlException);
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override

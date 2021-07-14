@@ -26,29 +26,29 @@ public class ServletAccessoUtente extends HttpServlet {
                 if (utente==null){
 
                     String email=request.getParameter("emailUser");
-                    System.out.println("email " +email);
+
                     String password=request.getParameter("password");
                     UtenteDAO utenteDAO=new UtenteDAO();
 
-                    utente=(Utente)utenteDAO.cercaUtentebyEmail(email);
-                    System.out.println("dndinfdif");
-                    System.out.println(utente.getPassword());
+                    utente=(Utente)utenteDAO.cercaUtentebyEmail(email,password);
+                   /* System.out.println("dndinfdif");
+                    System.out.println(utente.getPassword());*/
 
-                    Utente u= new Utente();
-                    u.criptPassword(password);
+                 //   Utente u= new Utente();
+                  //  u.criptPassword(password);
 
 
-                   System.out.println("utente " + u.getPassword());
+                  // System.out.println("utente " + utente.getPassword());
                     if(utente!=null){
-                        if(utente.getPassword().equals(u.getPassword())) {
+                       // if(utente.getPassword().equals(u.getPassword())) {
                             session.setAttribute("utente", utente);
                             response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
-                        }
+                      /*  }
                         else {
                             RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
                             request.setAttribute("errore", "Utente non trovato");
                             requestDispatcher.forward(request, response);
-                        }
+                        }*/
                     }else {
 
                         request.setAttribute("errore","Utente non trovato");

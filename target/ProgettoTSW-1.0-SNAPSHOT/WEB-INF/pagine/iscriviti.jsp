@@ -16,6 +16,7 @@
   <!--  <link rel="stylesheet" href="./css/styleIscrizione.css">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="./js/iscrizione.js" type="text/javascript" defer></script>
+    <script src="js/header.js" type="text/javascript" defer></script>
 </head>
 <body>
 

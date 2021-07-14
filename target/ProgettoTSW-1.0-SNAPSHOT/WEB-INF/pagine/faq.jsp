@@ -6,6 +6,7 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleFaq"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
+    <script src="js/header.js" type="text/javascript" defer></script>
     <link rel="stylesheet" href="./css/styleFaq.css">
 </head>
 
@@ -18,7 +19,7 @@
 
     <h1>Come faccio a conoscere la data di scadenza di un prodotto?</h1>
 
-    Tutti i prodotti presenti sul sito FAIMED.IT hanno una scadenza dai i 12 mesi in poi.
+    Tutti i prodotti presenti sul sito pHarmaLife.IT hanno una scadenza dai i 12 mesi in poi.
 
     I prodotti a scadenza breve vengono segnalati o inseriti in una categoria specifica.
 
@@ -31,13 +32,13 @@
 
     <h1>Come posso essere sicuro di aver effettuato l'acquisto in modo corretto?</h1>
 
-    Una volta effettuato l'ordine riceverai un messaggio di conferma con un numero ordine al tuo indirizzo E-mail. Se non ti arriva, contatta il servizio clienti alla seguente E-mail: assistenza@faimed.it .
+    Una volta effettuato l'ordine riceverai un messaggio di conferma con un numero ordine al tuo indirizzo E-mail. Se non ti arriva, contatta il servizio clienti alla seguente E-mail: assistenza@pHarmaLife.it .
 
 
 
     <h1>Non ho ricevuto la E- mail di conferma dell’ordine.</h1>
 
-    Nessun problema. Forse hai digitato male il tuo indirizzo mail o la nostra mail di conferma è finita nello SPAM. Invia una mail ad assistenza@faimed.it indicando il tuo nome e cognome e i prodotti acquistati
+    Nessun problema. Forse hai digitato male il tuo indirizzo mail o la nostra mail di conferma è finita nello SPAM. Invia una mail ad assistenza@pHarmaLife.it indicando il tuo nome e cognome e i prodotti acquistati
 
 
 
@@ -55,7 +56,7 @@
 
     Il corriere che utilizziamo per le spedizioni Nazionali è GLS. Se sei a conoscenza di problemi che ha GLS sul tuo territorio e preferisci usufruire di un altro corriere contattaci alla mail assistenza@faimed.it per comunicarci le tue preferenze.
 
-    *In caso di prodotti liquidi, particolarmente pesanti e/o voluminosi, Faimed si riserva il diritto di contattare il cliente, per comunicare eventuali adeguamenti dei costi di spedizione.
+    *In caso di prodotti liquidi, particolarmente pesanti e/o voluminosi, pHarmaLife si riserva il diritto di contattare il cliente, per comunicare eventuali adeguamenti dei costi di spedizione.
 
 
 
@@ -69,7 +70,7 @@
 
     <h1>Ho bisogno di un grande quantitativo di un prodotto, come verifico le quantità disponibili?</h1>
 
-    Tutti i prodotti presenti su FAIMED.IT hanno una propria scheda.
+    Tutti i prodotti presenti su pHarmaLife.IT hanno una propria scheda.
 
     Per conoscere la quantità di un prodotto cliccare su “DETTAGLI PRODOTTO”. Se hai necessità di ulteriore quantitativo del prodotto indicato, puoi contattarci e provvederemo a integrare l’ordine nel più breve tempo possibile.
 
@@ -95,7 +96,7 @@
 
     <h1>Il prodotto che mi interessa risulta terminato. Tornerà disponibile?</h1>
 
-    I prodotti presenti su FAIMED.IT vengono periodicamente riordinati. Se non trovi un prodotto invia una mail al servizio clienti: assistenza@faimed.it .
+    I prodotti presenti su pHarmaLife.IT vengono periodicamente riordinati. Se non trovi un prodotto invia una mail al servizio clienti: assistenza@faimed.it .
 
 
 
@@ -137,7 +138,7 @@
 
     <h1>Effettuate spedizioni all’estero?</h1>
 
-    Si, noi di FAIMED.it spediamo in tutta Europa.
+    Si, noi di pHarmaLife.it spediamo in tutta Europa.
 
     Per conoscere i costi di spedizione ti consigliamo di contattare il servizio clienti all’ indirizzo E-mail assistenza@faimed.it indicando i prodotti che si desidera acquistare e l’indirizzo di spedizione. Saremo noi a fornire un rapido preventivo.
 

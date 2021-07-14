@@ -16,6 +16,7 @@ public class Carrello {
     private ArrayList<Ordine> ordini;
 
     public Carrello() {
+        prodotti= new ArrayList<>();
     }
 
     public Carrello(int codiceCarrello, Utente utente, ArrayList<Prodotto> prodotti, int totaleProdotti) {
@@ -47,6 +48,10 @@ public class Carrello {
 
     public void setProdotti(ArrayList<Prodotto> prodotti) {
         this.prodotti = prodotti;
+    }
+
+    public void addProdotto(Prodotto p ){
+        prodotti.add(p);
     }
 
     public int getTotaleProdotti() {

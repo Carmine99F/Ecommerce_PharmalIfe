@@ -8,13 +8,13 @@ import java.util.Optional;
 
 public class CategoriaDAO implements CategoriaDAOMethod {
     @Override
-    public Optional<Categoria> cercaCategoria(int idCategoria) {
+    public Categoria cercaCategoria(String nome) {
 
         try(Connection connection= ConPool.getConnection()){
 
             PreparedStatement ps;
-            ps=connection.prepareStatement("select * from Ordine where idCategoria=? ");
-            ps.setInt(1,idCategoria);
+            ps=connection.prepareStatement("select * from Categoria where nomeCategoria=?");
+            ps.setString(1,nome);
 
             ResultSet rs=ps.executeQuery();
             if (rs.next()){
@@ -22,13 +22,12 @@ public class CategoriaDAO implements CategoriaDAOMethod {
                 categoria.setIdCategoria(rs.getInt(1));
                 categoria.setNomeCategoria(rs.getString(2));
                 categoria.setRoot(rs.getInt(3));
-                return Optional.of(categoria);
+                return categoria;
             }
         }catch (SQLException sqlException){
-
+            throw  new RuntimeException(sqlException);
         }
-        return Optional.empty();
-
+        return null;
     }
 
     @Override
@@ -96,6 +95,27 @@ public class CategoriaDAO implements CategoriaDAOMethod {
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
+        }
+    }
+
+    @Override
+    public ArrayList<Categoria> doRetraiveByAllCategorieRoot() {
+        try(Connection connection=ConPool.getConnection()){
+            PreparedStatement ps=connection.prepareStatement("select  * from Categoria where root=0");
+            ResultSet rs=ps.executeQuery();
+            ArrayList<Categoria> categorie= new ArrayList<>();
+            while (rs.next()){
+                Categoria categoria= new Categoria();
+                categoria.setIdCategoria(rs.getInt(1));
+                categoria.setNomeCategoria(rs.getString(2));
+                categoria.setRoot(rs.getInt(3));
+                categorie.add(categoria);
+            }
+            connection.close();
+            return categorie;
+
+        }catch (SQLException sqlException){
+            throw  new RuntimeException(sqlException);
         }
     }
 

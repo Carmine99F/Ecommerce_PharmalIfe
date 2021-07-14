@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface MarchioDAOMethod {
 
-    public Optional<Marchio> cercaMarchio(String nomeMarchio);
+    public Marchio cercaMarchio(String nomeMarchio);
     public void deleteMarchio(String nomeMarchio);
     public void insertMarchio(Marchio m);
     public void updateMarchio(Marchio m, String nomeMarchio);

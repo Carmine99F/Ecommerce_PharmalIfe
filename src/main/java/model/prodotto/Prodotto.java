@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Prodotto {
     private int codiceProdotto;
-    private Carrello carrello;
+
     private ArrayList<Utente> utente;
     private Categoria categoria;
     private String nome;
@@ -17,6 +17,7 @@ public class Prodotto {
     private int quantita;
     private Marchio marchio;
     private String pathImmagine;
+    private String descrrizione;
 
     public Prodotto() {
     }
@@ -24,7 +25,7 @@ public class Prodotto {
     public Prodotto(int codiceProdotto, Carrello carrello, ArrayList<Utente> utente,
                     Categoria categoria, String nome, double prezzo, int quantita, Marchio marchio) {
         this.codiceProdotto = codiceProdotto;
-        this.carrello = carrello;
+
         this.utente = utente;
         this.categoria = categoria;
         this.nome = nome;
@@ -41,13 +42,6 @@ public class Prodotto {
         this.codiceProdotto = codiceProdotto;
     }
 
-    public Carrello getCarrello() {
-        return carrello;
-    }
-
-    public void setCarrello(Carrello carrello) {
-        this.carrello = carrello;
-    }
 
     public ArrayList<Utente> getUtente() {
         return utente;
@@ -107,6 +101,14 @@ public class Prodotto {
 
     public void setPathImmagine(String pathImmagine) {
         this.pathImmagine = pathImmagine;
+    }
+
+    public String getDescrrizione() {
+        return descrrizione;
+    }
+
+    public void setDescrrizione(String descrrizione) {
+        this.descrrizione = descrrizione;
     }
 
     @Override

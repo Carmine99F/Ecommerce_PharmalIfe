@@ -12,7 +12,7 @@ import java.util.Optional;
 public class UtenteDAO implements UtenteDAOMethod {
 
     @Override
-    public Optional<Utente> cercaUtente(String codiceFiscale) {
+    public Utente cercaUtente(String codiceFiscale) {
         try(Connection connection= ConPool.getConnection()){
 
             PreparedStatement ps;
@@ -32,21 +32,22 @@ public class UtenteDAO implements UtenteDAOMethod {
                 utente.setCap(rs.getString(8));
                 utente.setTelefono(rs.getString(9));
                 utente.setAdmin(rs.getBoolean(10));
-                return Optional.of(utente);
+                return utente;
             }
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
-        return Optional.empty();
+        return null;
     }
 
     @Override
-    public Utente cercaUtentebyEmail(String email) {
+    public Utente cercaUtentebyEmail(String email,String password) {
         try(Connection connection= ConPool.getConnection()){
 
             PreparedStatement ps;
-            ps=connection.prepareStatement("select * from Utente where email=?");
+            ps=connection.prepareStatement("select * from Utente where email=? and pass=SHA1(?)");
             ps.setString(1, email);
+            ps.setString(2,password);
 
             ResultSet rs=ps.executeQuery();
             if (rs.next()){
@@ -55,7 +56,7 @@ public class UtenteDAO implements UtenteDAOMethod {
                 utente.setNome(rs.getString(2));
                 utente.setCognome(rs.getString(3));
                 utente.setEmail(rs.getString(4));
-                utente.setPassword(rs.getString(5));
+                utente.criptPassword(rs.getString(5));
                 utente.setVia(rs.getString(6));
                 utente.setNumeroCivico(rs.getInt(7));
                 utente.setCap(rs.getString(8));
@@ -84,7 +85,7 @@ public class UtenteDAO implements UtenteDAOMethod {
                 Prodotto p= new Prodotto();
 
                 p.setCodiceProdotto(rs.getInt(12));
-                p.getCarrello().setCodiceCarrello(rs.getInt(13));
+              //  p.getCarrello().setCodiceCarrello(rs.getInt(13));
                 UtenteDAO utenteDAO= new UtenteDAO();
                 ArrayList<Utente> lista = utenteDAO.doRetraiveByAllUtenti();
                 for(Utente u : lista){
@@ -204,7 +205,7 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
     }
 
-    @Override
+  /*  @Override
     public void updateUtente(Utente u, String codiceFiscale) {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;
@@ -227,7 +228,47 @@ public class UtenteDAO implements UtenteDAOMethod {
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
         }
+    }*/
+
+    @Override
+    public boolean updateUtente(Utente utente){
+        try(Connection connection=ConPool.getConnection()){
+            PreparedStatement ps=connection.prepareStatement("update Utente set nome = ? ,cognome = ? ," +
+                    "email = ? ,pass = ? where codiceFiscale=?");
+            ps.setString(5,utente.getCodiceFiscale());
+            ps.setString(1,utente.getNome());
+            ps.setString(2,utente.getCognome());
+            ps.setString(3,utente.getEmail());
+            ps.setString(4,utente.getPassword());
+            if(ps.executeUpdate()!=1){
+                //throw  new RuntimeException("Errore Update");
+                return  false;
+            }
+            return  true;
+        }catch (SQLException sqlException){
+            throw  new RuntimeException(sqlException);
+        }
     }
+
+    @Override
+    public void updateIndirizzoUtente(Utente utente) {
+
+        try(Connection connection=ConPool.getConnection()){
+            PreparedStatement ps;
+            ps=connection.prepareStatement("update Utente set via = ? , numeroCivico = ? , cap = ? where = ? ");
+            ps.setString(5, utente.getCodiceFiscale());
+            ps.setString(1, utente.getVia());
+            ps.setInt(2,utente.getNumeroCivico());
+            ps.setString(3, utente.getCap());
+            if(ps.executeUpdate()!=1){
+                throw new RuntimeException("Errore Update");
+            }
+
+        }catch (SQLException sqlException){
+            throw new RuntimeException(sqlException);
+        }
+    }
+
 
     @Override
     public ArrayList<Utente> doRetraiveByAllUtenti() {

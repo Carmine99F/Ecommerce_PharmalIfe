@@ -39,26 +39,41 @@ public class ServletLink extends HttpServlet {
                     pagina = "WEB-INF/pagine/formLogin.jsp";
                 }
                 break;
-            case "iscriviti" :pagina="/WEB-INF/pagine/iscriviti.jsp";
+            case "iscriviti" :
+                pagina="/WEB-INF/pagine/iscriviti.jsp";
                 break;
-            case "mioAccount" :pagina="WEB-INF/pagine/mioAccount.jsp";
+            case "mioAccount" :
+                pagina="WEB-INF/pagine/mioAccount.jsp";
                 break;
-            case "preferiti"  :pagina="WEB-INF/pagine/preferiti.jsp";
+            case "preferiti"  :
+                pagina="WEB-INF/pagine/preferiti.jsp";
                 break;
-            case "assistenza" :pagina="WEB-INF/pagine/assistenza.jsp";
+            case "assistenza" :
+                pagina="WEB-INF/pagine/assistenza.jsp";
                 break;
-            case "infoAzienda" :pagina="WEB-INF/pagine/infoAzienda.jsp";
+            case "infoAzienda" :
+                pagina="WEB-INF/pagine/infoAzienda.jsp";
                 break;
-            case "contatti"   :pagina="WEB-INF/pagine/contatti.jsp";
+            case "contatti"   :
+                pagina="WEB-INF/pagine/contatti.jsp";
                 break;
-            case "prodotti"    :pagina="WEB-INF/pagine/listaProdotti.jsp";
+            case "prodotti" :
+                pagina="WEB-INF/pagine/listaProdotti.jsp";
                 break;
-            case "admin"       :pagina="WEB-INF/pagine/admin/areaAmministratore.jsp";
+            case "admin"    :
+                pagina="WEB-INF/pagine/admin/areaAmministratore.jsp";
                 break;
-            case "termini"       :pagina="WEB-INF/pagine/terminiCondizioni.jsp";
+            case "termini"  :
+                pagina="WEB-INF/pagine/terminiCondizioni.jsp";
                 break;
-            case "faq"       :pagina="WEB-INF/pagine/faq.jsp";
+            case "faq"      :
+                pagina="WEB-INF/pagine/faq.jsp";
                 break;
+            case "info"     :
+                pagina="WEB-INF/pagine/InfoUtente.jsp";
+                break;
+            case "carrello" :
+                pagina="WEB-INF/pagine/carrello.jsp";
           /*  default:pagina="webapp/index.jsp";
                 break;*/
         }

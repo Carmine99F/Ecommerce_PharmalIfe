@@ -13,6 +13,7 @@
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
   <!-- <script src="js/header.js" type="text/javascript" defer></script>--->
+    <script src="js/header.js" type="text/javascript" defer></script>
     <script src="./js/login.js" type="text/javascript" defer></script>
 
 </head>

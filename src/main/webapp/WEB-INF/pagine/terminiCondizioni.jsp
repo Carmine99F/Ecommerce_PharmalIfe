@@ -6,6 +6,7 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleTerminiCondizioni"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
+    <script src="js/header.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>

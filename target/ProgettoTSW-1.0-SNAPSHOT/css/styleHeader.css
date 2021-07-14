@@ -39,13 +39,13 @@
     margin-left: 50px;
 }
 .field input{
-    border-radius: 16px;
+    border-radius: 19px;
     background-color: whitesmoke;
     border-color: transparent;
     color: grey;
-    padding: 6px;
+    padding: 8px;
     outline: none; /* elimina il bordo quando clicchi */
-    box-shadow: 1px 2px lightgrey;
+   /* box-shadow: 1px 2px lightgrey;*/
     width: 100%;
 }
 .field button{
@@ -143,6 +143,7 @@ nav a:hover , .dropdown:hover .dropbtn{
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 
+
 }
 .colum a{
     float: none;
@@ -150,6 +151,10 @@ nav a:hover , .dropdown:hover .dropbtn{
     padding: 16px;
     display: block;
     text-align: center;
+
+}
+.uno a{
+    border-right: 1px solid lightgrey;
 }
 .colum a:hover{
     background-color: inherit;

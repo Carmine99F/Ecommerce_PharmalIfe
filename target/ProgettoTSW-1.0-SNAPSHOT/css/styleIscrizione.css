@@ -1,10 +1,4 @@
-/**{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial;
-}
-*/
+
 div h1{
     color: #009fe3;
 }
@@ -18,7 +12,7 @@ p{
 }
 */
 
-/* Add padding to containers */
+
 .container-iscriviti {
     display: flex;
     width: 100%;

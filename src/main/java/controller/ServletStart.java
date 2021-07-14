@@ -4,6 +4,8 @@ import model.categoria.Categoria;
 import model.categoria.CategoriaDAO;
 import model.marchio.Marchio;
 import model.marchio.MarchioDAO;
+import model.utente.Utente;
+import model.utente.UtenteDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +20,9 @@ public class ServletStart extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+
         CategoriaDAO categoriaDAO= new CategoriaDAO();
-        ArrayList<Categoria>categorie= categoriaDAO.doRetraiveByAllCategorie();
+        ArrayList<Categoria>categorie= categoriaDAO.doRetraiveByAllCategorieRoot();
         MarchioDAO marchioDAO= new MarchioDAO();
         ArrayList<Marchio> marchi= marchioDAO.doRetraiveByAllMarchi();
         getServletContext().setAttribute("marchi",marchi);

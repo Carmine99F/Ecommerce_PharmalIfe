@@ -6,6 +6,7 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleContatti"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
+    <script src="js/header.js" type="text/javascript" defer></script>
     <link rel="stylesheet" href="./css/styleContatti.css">
 </head>
 

@@ -4,10 +4,11 @@
 <%@ page import="java.util.ArrayList,model.marchio.Marchio" %>
 <%@ page import="model.utente.Utente" %>
 <%@ page import="model.categoria.Categoria" %>
+<%@ page import="model.marchio.MarchioDAO" %>
 <% Utente utente=(Utente) session.getAttribute("utente"); %>
-<% ArrayList<Categoria> categorie=(ArrayList<Categoria>) application.getAttribute("categorie");  %>
-<%--<%ArrayList<Marchio> marchi=(ArrayList<Marchio>) application.getAttribute("marchi"); %>
-<%=marchi.size()%>--%>
+<% ArrayList<Categoria> categorie=(ArrayList<Categoria>) application.getAttribute("categorie");%>
+<%ArrayList<Marchio> marchi=(ArrayList<Marchio>) application.getAttribute("marchi"); %>
+
 
 <header class="top-header">
     <p class="info">
@@ -30,7 +31,7 @@
                 <a   href="ServletLink?scelta=login"  class="icone"> <i class="fa fa-user-circle"  onclick="mostraForm()" style="color: limegreen;font-size: 30px" ></i> </a>
                 <a   href="https://www.facebook.com/pharmalife.ivane.5" class="icone"> <i class="fab fa-facebook-f" style="color: limegreen;font-size: 30px" ></i></a>
                 <a   href="ServletAssistenza" class="icone"> <i class="fas fa-phone-square" style="color: limegreen;font-size: 30px"></i> </a>
-                <a   href="" class="icone"><i class="fas fa-shopping-cart" style="color: limegreen;font-size: 30px"></i></a>
+                <a   href="ServletLink?scelta=carrello" class="icone"><i class="fas fa-shopping-cart" style="color: limegreen;font-size: 30px"></i></a>
                 <a  title="Logout" href="ServletLink?scelta=preferiti" class="icone"><i class="far fa-heart" style="color: limegreen;font-size: 30px"></i> </a>
                 <% if(utente!=null){%>
                 <a  style="order: 6" href="ServletAccessoUtente?value=logout" class="icone"><i class="fas fa-sign-out-alt" style="color: limegreen;font-size: 30px"></i></a>
@@ -41,22 +42,24 @@
 </header>
 <nav>
     <a href="ServletLink?scelta=home" class="home">Home</a>
-
     <div class="dropdown">
         <button class="dropbtn">Prodotti</button>
         <div class="dropdown-content">
             <div class="row">
-                <div class="colum">
+                <div class="colum uno">
                     <% for(int i=0;i<(categorie.size()/2)+1;i++){    %>
-                    <a href="ServletLink?scelta=prodotti"><%=categorie.get(i).getNomeCategoria()%></a>
+                    <a href="ServletListaProdotti?value=<%=categorie.get(i).getIdCategoria()%>&nomejsp=header">
+                        <%=categorie.get(i).getNomeCategoria()%>
+                    </a>
                     <% } %>
                    <!-- <a href="#">Link 1</a>
                     <a href="#">Link 2</a>
                     <a href="#">Link 3</a>-->
                 </div>
-              <div class="colum">
+              <div class="colum due">
                   <% for(int i=(categorie.size()/2)+1;i<categorie.size();i++){    %>
-                  <a href="ServletLink?scelta=prodotti"><%=categorie.get(i).getNomeCategoria()%></a>
+                  <a href="ServletListaProdotti?value=<%=categorie.get(i).getIdCategoria()%>&nomejsp=header">
+                      <%=categorie.get(i).getNomeCategoria()%></a>
                   <% } %>
                   <!--  <a href="#">Link 1</a>
                     <a href="#">Link 2</a>
@@ -70,15 +73,19 @@
        <div class="dropdown-content">
            <div class="row">
                <div class="colum">
-
-                   <a href="#">Link 1</a>
-                   <a href="#">Link 2</a>
-                   <a href="#">Link 3</a>
+                    <%for(int i=0;i< (marchi.size()/2)+1;i++){   %>
+                   <a href=""><%=marchi.get(i).getNomeMarchio()%></a>
+                   <% } %>
+              <!--    <a href="#">Link 2</a>
+                   <a href="#">Link 3</a>-->
                </div>
                <div class="colum">
-                   <a href="#">Link 1</a>
+                   <% for(int i= (marchi.size()/2)+1;i<marchi.size();i++){  %>
+                   <a href=""><%=marchi.get(i).getNomeMarchio()%></a>
+                   <%  } %>
+                <!--  <a href="#">Link 1</a>
                    <a href="#">Link 2</a>
-                   <a href="#">Link 3</a>
+                   <a href="#">Link 3</a>-->
                </div>
            </div>
        </div>

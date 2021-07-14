@@ -9,14 +9,16 @@ import java.util.Optional;
 
 public interface UtenteDAOMethod {
 
-    public Optional<Utente> cercaUtente (String codiceFiscale);
-    public Utente cercaUtentebyEmail (String email);
+    public Utente cercaUtente (String codiceFiscale);
+    public Utente cercaUtentebyEmail (String email,String password);
     public ArrayList<Prodotto> preferiti(String codiceFiscale);
     public ArrayList<Ordine> ordiniAllUtenti();
     public ArrayList<Messaggio> messaggiAllUtenti();
     public void deleteUtente (String codiceFiscale);
     public void insertUtente (Utente u);
-    public void updateUtente (Utente u, String codiceFiscale);
+   // public void updateUtente (Utente u, String codiceFiscale);
+    public boolean updateUtente(Utente utente);
+    public void updateIndirizzoUtente(Utente utente);
     public ArrayList<Utente> doRetraiveByAllUtenti();
     public ArrayList<Utente> cercaUtenti(int start, int end);
 }

@@ -13,6 +13,7 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleAssistenza"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
+    <script src="js/header.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
@@ -27,7 +28,7 @@
     </div>
 
     <div class="flex-container">
-        <form action="">
+        <form action="ServletInvioMessaggio" method="post">
             <div>
                 <label for="fname"></label>
                 <input type="text" id="fname" name="firstname" placeholder="Nome"><br>
@@ -48,7 +49,7 @@
             </div>
             <div>
                 <label for="subject"></label>
-                <textarea id="subject" name="subject" placeholder="Il Tuo Messaggio" style="height:200px"></textarea>
+                <textarea id="subject" name="messaggio" placeholder="Il Tuo Messaggio" style="height:200px"></textarea>
             </div>
             <input type="submit" value="INVIA">
         </form>

@@ -13,11 +13,13 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleListaProdottiAdmin"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
+    <script src="js/header.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="../default/header.jsp"/>
 
 <h1 class="list">LISTA PRODOTTI</h1>
+
 
 <table>
 
@@ -94,7 +96,7 @@
         <td>Update</td>
     </tr>
 </table>
-
+<button onclick="tornaIndietro()">Torna alla home Admin</button>
 <div class="center-pagination">
     <div class="pagination">
         <a href="#">&laquo;</a>
@@ -109,5 +111,10 @@
 </div>
 </div>
 <jsp:include page="../default/footer.jsp"/>
+<script>
+    function tornaIndietro(){
+        window.history.back();
+    }
+</script>
 </body>
 </html>
