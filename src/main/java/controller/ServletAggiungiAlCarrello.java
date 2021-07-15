@@ -23,28 +23,36 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         Prodotto prodotto= prodottoDAO.cercaProdotto(idProdotto);
         if(utente!=null){
-          Carrello carrello=(Carrello) session.getAttribute("carrello");
-            if(carrello==null){
+          //Carrello carrello=(Carrello) session.getAttribute("carrello");
+            //System.out.println("Carrello " + utente.getCarrello());
+            if(utente.getCarrello()!=null){
+                System.out.println("Carrellooo esistente" + utente.getCarrello());
+                utente.getCarrello().addProdotto(prodotto);
+
+                //session.setAttribute("carrello",carrello1);
+            }else {
+                System.out.println("Carrello non esiste " +utente.getCarrello());
                 Carrello carrello1= new Carrello();
                 carrello1.addProdotto(prodotto);
-                carrello1.setUtente(utente);
-                session.setAttribute("carrello",carrello1);
-            }else {
-                carrello.addProdotto(prodotto);
+                utente.setCarrello(carrello1);
+
             }
         }else{
-            Carrello carrello= new Carrello();
-            carrello.addProdotto(prodotto);
-            HttpSession session1=request.getSession();
-            session1.setAttribute("carrello",carrello);
-            session1.setMaxInactiveInterval(5000);
+            Carrello carrello=(Carrello) session.getAttribute("carrello");
+            if(carrello!=null) {
+                carrello.addProdotto(prodotto);
+            }else{
+                Carrello carrello1= new Carrello();
+                carrello1.addProdotto(prodotto);
+                session.setAttribute("carrello",carrello1);
+                session.setMaxInactiveInterval(8000);
+            }
+          /*  carrello.addProdotto(prodotto);
+            session=request.getSession();
+            session.setAttribute("carrello",carrello);
+            session.setMaxInactiveInterval(5000);*/
 
         }
-
-
-
-       // CarrelloDAO carrelloDAO= new CarrelloDAO();
-        //carrelloDAO.insertCarrello(carrello);
 
         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
         dispatcher.forward(request,response);

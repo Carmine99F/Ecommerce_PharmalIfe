@@ -42,11 +42,12 @@
                     <legend>Informazioni</legend>
                     Categoria :          Farmaco da Banco <br>
                     Codice Prodotto :    0PR00<%=prodotto.getCodiceProdotto()%><br>
-                    Descrizione :
-                    OKI fa parte della categoria degli antiinfiammatori non steroidei. <br>
+                    Descrizione :      <%=prodotto.getDescrrizione()%>
+                  <!--  OKI fa parte della categoria degli antiinfiammatori non steroidei. <br>
                     Trattamento sintomatico e di breve durata di stati infiammatori <br>
                     associati a dolore quali quelli a carico dell'apparato osteoarticolare<br>
-                    dolore post operatorio e otiti.
+                    dolore post operatorio e otiti.-->
+
                 </fieldset>
 
             </div>

@@ -92,6 +92,8 @@
    </div>
     <a href="ServletLink?scelta=infoAzienda">Chi siamo</a>
     <a href="ServletAssistenza">Contatti</a>
+    <%if(utente!=null) {  %>
     <a href="ServletLink?scelta=assistenza">Ti Aiutiamo Noi</a>
+    <%   } %>
 </nav>
 

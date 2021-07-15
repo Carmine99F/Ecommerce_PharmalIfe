@@ -10,13 +10,20 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%!Utente utente;  %>
-<%!ArrayList<Prodotto> prodotti; %>
+
 <%Carrello carrello=(Carrello)session.getAttribute("carrello"); %>
+<%Utente utente=(Utente) session.getAttribute("utente"); %>
 <%
-    if(carrello!=null) {
-        prodotti = carrello.getProdotti();
-         utente= carrello.getUtente();
+    ArrayList<Prodotto> prodotti=null;
+    if(carrello!=null){
+        prodotti= carrello.getProdotti();
+    }else{
+        if(utente!=null){
+            if(utente.getCarrello()!=null){
+                prodotti=utente.getCarrello().getProdotti();
+            }
+
+        }
     }
 %>
 
@@ -38,31 +45,33 @@
 
 </head>
 <body>
-<jsp:include page="default/header.jsp"/>
 
-<% if(carrello==null){  %>
+<jsp:include page="default/header.jsp"/>
+<%  if(prodotti==null) { %>
 <h2>Il tuo Carrello è vuoto, acquista per aggiungere prodotti al carrello</h2>
-<% } else { %>
-<% if(utente!=null){ %>
-<h2>Ecco il tuo  carrello  <%=utente.getNome()%> </h2>
-<% }  else{ %>
+<%  } else { %>
+<% if(utente!=null) {  %>
+<h2>Ecco il tuo  carrello  <%=utente.getNome()%> <%=utente.getCognome()%> </h2>
+<%  }  else { %>
 <h2>Ecco il tuo carrello Visitatore</h2>
-<% } %>
+<%  }   %>
+
+
 <div class="include-tutto">
      <div class="lista-prodotti">
         <div class="titolo">
             <h1>CARRELLO DELLA SPESA</h1>
         </div>
-
+        <%for(Prodotto p : prodotti){   %>
         <div class="card-prodotti">
             <div class="immagine-card-prodotti">
-                <img src="https://faimed.it/5177-cart_default/filorga-time-filler-crema-50ml.jpg" alt="filorga-time-filler-crema-50ml">
+                <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="filorga-time-filler-crema-50ml" width="150" height="150">
             </div>
             <div class="info-card-prodotti">
                 <a class="label" href="">
-                  Oki </a>
+                  <%=p.getNome()%> - <%=p.getMarchio().getNomeMarchio()%> </a>
                 <div class="product-discount">
-                    <span class="regular-price" style="text-decoration: line-through;">65,00&nbsp;€ </span>
+                    <span class="regular-price" style="text-decoration: line-through;"> <%=p.getPrezzo()%> € </span>
                     <span class="discount-percentage"> -55,54% </background> </span>
                 </div>
                 <div class="current-price">
@@ -85,7 +94,7 @@
                 </a>
             </div>
         </div>
-
+<%  } %>
     <!-- <div class="card-prodotti">
             <div class="immagine-card-prodotti">
                 <img src="https://faimed.it/5177-cart_default/filorga-time-filler-crema-50ml.jpg" alt="filorga-time-filler-crema-50ml">

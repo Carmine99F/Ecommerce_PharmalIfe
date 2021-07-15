@@ -51,8 +51,8 @@ public class ServletInvioMessaggio extends HttpServlet {
         m.setUtente(u);
         service.insertMessaggio(m);
 
-        String address="index.jsp";
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/pagine/messaggioInviato.jsp");
         dispatcher.forward(request, response);
     }
 

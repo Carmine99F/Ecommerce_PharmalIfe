@@ -1,5 +1,6 @@
 package controller;
 
+import model.carrello.Carrello;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
 
@@ -26,31 +27,19 @@ public class ServletAccessoUtente extends HttpServlet {
                 if (utente==null){
 
                     String email=request.getParameter("emailUser");
-
                     String password=request.getParameter("password");
                     UtenteDAO utenteDAO=new UtenteDAO();
-
                     utente=(Utente)utenteDAO.cercaUtentebyEmail(email,password);
-                   /* System.out.println("dndinfdif");
-                    System.out.println(utente.getPassword());*/
 
-                 //   Utente u= new Utente();
-                  //  u.criptPassword(password);
-
-
-                  // System.out.println("utente " + utente.getPassword());
                     if(utente!=null){
-                       // if(utente.getPassword().equals(u.getPassword())) {
+                           if(session.getAttribute("carrello")!=null){
+                               session.removeAttribute("carrello");
+                           }
+
                             session.setAttribute("utente", utente);
                             response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
-                      /*  }
-                        else {
-                            RequestDispatcher requestDispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
-                            request.setAttribute("errore", "Utente non trovato");
-                            requestDispatcher.forward(request, response);
-                        }*/
-                    }else {
 
+                    }else {
                         request.setAttribute("errore","Utente non trovato");
                         RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/pagine/formLogin.jsp");
                         dispatcher.forward(request,response);
@@ -65,6 +54,11 @@ public class ServletAccessoUtente extends HttpServlet {
                 if(utente!=null){
 
                     session.removeAttribute("utente");
+                    Carrello carrello=(Carrello) session.getAttribute("carrello");
+                    if(carrello!=null){
+                        session.removeAttribute("carrello");
+                    }
+
                     response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
                 }
         }

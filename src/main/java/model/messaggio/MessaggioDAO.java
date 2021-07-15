@@ -79,10 +79,9 @@ public class MessaggioDAO implements MessaggioDAOMethod {
             rs.next();
             int id = rs.getInt(1);
             m.setCodiceMessaggio(id);
-            ps.execute();
-            ps.execute();
+
         }catch (SQLException sqlException){
-            throw new RuntimeException("insert error");
+            throw new RuntimeException(sqlException);
         }
     }
     @Override
