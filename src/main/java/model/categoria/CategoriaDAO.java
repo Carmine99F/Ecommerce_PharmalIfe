@@ -31,6 +31,26 @@ public class CategoriaDAO implements CategoriaDAOMethod {
     }
 
     @Override
+    public Categoria cercaCategoriaById(int id) {
+        try(Connection connection=ConPool.getConnection()) {
+            PreparedStatement ps=connection.prepareStatement("select * from Categoria where idCategoria=?");
+            ps.setInt(1,id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                Categoria categoria= new Categoria();
+                categoria.setIdCategoria(rs.getInt("idCategoria"));
+                categoria.setNomeCategoria(rs.getString("nomeCategoria"));
+                categoria.setRoot(rs.getInt("root"));
+                return  categoria;
+            }
+
+        }catch (SQLException sqlException){
+            throw  new RuntimeException(sqlException);
+        }
+        return  null;
+    }
+
+    @Override
     public void deleteCategoria(int idCategoria) {
 
         try(Connection connection=ConPool.getConnection()){

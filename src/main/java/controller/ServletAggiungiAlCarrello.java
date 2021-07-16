@@ -45,7 +45,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 Carrello carrello1= new Carrello();
                 carrello1.addProdotto(prodotto);
                 session.setAttribute("carrello",carrello1);
-                session.setMaxInactiveInterval(8000);
+                session.setMaxInactiveInterval(40);
             }
           /*  carrello.addProdotto(prodotto);
             session=request.getSession();
@@ -54,8 +54,9 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
 
         }
 
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/carrello.jsp");
-        dispatcher.forward(request,response);
+      //  response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"WEB-INF/pagine/listaProdotti.jsp"));
+     //   RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/listaProdotti.jsp");
+       // dispatcher.forward(request,response);
 
 
 

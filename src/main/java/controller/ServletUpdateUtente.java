@@ -24,7 +24,7 @@ public class ServletUpdateUtente extends HttpServlet {
         utente.setNome(nomeUtente);
         utente.setCognome(cognomeUtente);
         utente.setEmail(email);
-        utente.criptPassword(password);
+        utente.criptPassword(nuovaPassword);
 
         UtenteDAO utenteDAO= new UtenteDAO();
         HttpSession session= request.getSession();

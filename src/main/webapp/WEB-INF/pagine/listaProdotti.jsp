@@ -10,7 +10,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%ArrayList<Prodotto> prodotti=(ArrayList<Prodotto>) request.getAttribute("prodotti"); %>
-
+<%String opzione=(String) request.getAttribute("opzione");%>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -24,12 +24,7 @@
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
-<%--<%for(Prodotto p : (ArrayList<Prodotto>)request.getAttribute("prodotti")) {  %>
-<div>
-    <p> <%=p.getNome()%></p>
-    <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>" alt="oki">
-</div>
-<%  } %>--%>
+
 <div id="container-prodotti">
     <aside>
         <form class="products" action="" method="post">
@@ -86,124 +81,6 @@
                 </div>
             </article>
             <%  }  %>
-      <!--     <article>
-            <figure>
-                <a href=""><img src="./immagini/Collutorio-Oki-Infiammazione-e-Dolore - Copia.jpg" alt="Oki" height="120" width="120"></a>
-                    <figcaption>
-                        <a href="">Colluttorio Oki   Avenoo </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>
-
-            <article>
-                <figure>
-                    <img src="pilorex.jpg" alt="Oki" height="120" width="120">
-                    <figcaption>
-                        <a href="">Pilorex </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:red;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>
-            <article>
-                <figure>
-                    <img src="Collutorio-Oki-Infiammazione-e-Dolore.jpg" alt="Oki" height="120" width="120">
-                    <figcaption>
-                        <a href="">Colluttorio Oki </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>
-            <article>
-                <figure>
-                    <img src="Collutorio-Oki-Infiammazione-e-Dolore.jpg" alt="Oki" height="120" width="120">
-                    <figcaption>
-                        <a href="">Colluttorio Oki </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>
-            <article>
-                <figure>
-                    <img src="Collutorio-Oki-Infiammazione-e-Dolore.jpg" alt="Oki" height="120" width="120">
-                    <figcaption>
-                        <a href="">Colluttorio Oki </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>
-            <article>
-                <figure>
-                    <img src="Collutorio-Oki-Infiammazione-e-Dolore.jpg" alt="Oki" height="120" width="120">
-                    <figcaption>
-                        <a href="">Colluttorio Oki </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>
-            <article>
-                <figure>
-                    <img src="Collutorio-Oki-Infiammazione-e-Dolore.jpg" alt="Oki" height="120" width="120">
-                    <figcaption>
-                        <a href="">Colluttorio Oki </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>
-            <article>
-                <figure>
-                    <img src="Collutorio-Oki-Infiammazione-e-Dolore.jpg" alt="Oki" height="120" width="120">
-                    <figcaption>
-                        <a href="">Colluttorio Oki </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>
-            <article>
-                <figure>
-                    <img src="Collutorio-Oki-Infiammazione-e-Dolore.jpg" alt="Oki" height="120" width="120">
-                    <figcaption>
-                        <a href="">Colluttorio Oki </a>
-                    </figcaption>
-                </figure>
-                <div class="aggiungi">
-                    <span class="iconaCarrello"> <i class="fas fa-cart-plus"></i> </span>
-                    <span class="btn"><button> Aggiungi Al Carrello</button>  </span>
-                    <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;">12.90$</span>
-                </div>
-            </article>-->
 
 
 
@@ -211,14 +88,25 @@
      </div>
        <div class="center-pagination">
            <div class="pagination">
+               <%if(opzione.contains("Categoria")){%>
                <a href="#">&laquo;</a>
                <a href="ServletListaProdotti?value=<%=request.getAttribute("idCategoria")%>&nomejsp=list" class="active">1</a>
-               <a href="" >2</a>
-               <a href="#">3</a>
-               <a href="#">4</a>
-               <a href="#">5</a>
-               <a href="#">6</a>
-               <a href="#">&raquo;</a>
+               <a href="ServletListaProdotti?value=<%=request.getAttribute("idCategoria")%>&nomejsp=list" >2</a>
+               <a href="ServletListaProdotti?value=<%=request.getAttribute("idCategoria")%>&nomejsp=list">3</a>
+               <a href="ServletListaProdotti?value=<%=request.getAttribute("idCategoria")%>&nomejsp=list">4</a>
+               <a href="ServletListaProdotti?value=<%=request.getAttribute("idCategoria")%>&nomejsp=list">5</a>
+               <a href="ServletListaProdotti?value=<%=request.getAttribute("idCategoria")%>&nomejsp=list">6</a>
+               <a href="ServletListaProdotti?value=<%=request.getAttribute("idCategoria")%>&nomejsp=list">&raquo;</a>
+               <%}else{%>
+               <a href="#">&laquo;</a>
+               <a href="ServletListaMarchi?value=<%=request.getAttribute("nomeMarchio")%>&nomejsp=list" class="active">1</a>
+               <a href="ServletListaMarchi?value=<%=request.getAttribute("nomeMarchio")%>&nomejsp=list" >2</a>
+               <a href="ServletListaMarchi?value=<%=request.getAttribute("nomeMarchio")%>&nomejsp=list">3</a>
+               <a href="ServletListaMarchi?value=<%=request.getAttribute("nomeMarchio")%>&nomejsp=list">4</a>
+               <a href="ServletListaMarchi?value=<%=request.getAttribute("nomeMarchio")%>&nomejsp=list">5</a>
+               <a href="ServletListaMarchi?value=<%=request.getAttribute("nomeMarchio")%>&nomejsp=list">6</a>
+               <a href="ServletListaMarchi?value=<%=request.getAttribute("nomeMarchio")%>&nomejsp=list">&raquo;</a>
+               <%}%>
            </div>
        </div>
     </main>

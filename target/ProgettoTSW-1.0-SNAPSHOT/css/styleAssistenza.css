@@ -149,3 +149,11 @@ textarea:focus ,input:focus{
         margin-left: 320px;
     }
 }*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .flex-container {
+        justify-content: flex-end;
+    } .flex-container input[type=text], textarea {
+              margin-left: 20px;
+          } input[type="submit"] {
+                          margin-left: 20px;  }
+}

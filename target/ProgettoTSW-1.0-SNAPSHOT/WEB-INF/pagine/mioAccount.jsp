@@ -20,9 +20,6 @@
 <jsp:include page="default/header.jsp"/>
 <%if(utente!=null){  %>
 <h1 class="myAccount">Benvenuto <%=utente.getNome()%></h1>
-<%  }  else {%>
-<h1 class="myAccount">Benvenuto Visitatore</h1>
-<% } %>
 <div class="flex-container">
     <div class="flex-item">
         <a href="ServletLink?scelta=info"><i class="fas fa-user-circle" style="background-color: white" ></i></a><br>
@@ -71,6 +68,10 @@
     </div>
     <% } } %>
 </div>
+<%  }  else {%>
+<h1 class="myAccount">Registrati per accedere all'area Utente</h1>
+<% } %>
+
 <jsp:include page="default/footer.jsp"/>
 </body>
 </html>

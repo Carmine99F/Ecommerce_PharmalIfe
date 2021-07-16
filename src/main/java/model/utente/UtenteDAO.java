@@ -1,5 +1,7 @@
 package model.utente;
 
+import model.categoria.Categoria;
+import model.marchio.Marchio;
 import model.messaggio.Messaggio;
 import model.ordine.Ordine;
 import model.prodotto.Prodotto;
@@ -7,7 +9,6 @@ import model.storage.ConPool;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class UtenteDAO implements UtenteDAOMethod {
 
@@ -75,29 +76,26 @@ public class UtenteDAO implements UtenteDAOMethod {
         ArrayList<Prodotto> prodottiPreferiti= new ArrayList<>();
         try(Connection connection=ConPool.getConnection()){
 
-            PreparedStatement ps=connection.prepareStatement("select * from Preferito as pref inner join Utente ut " +
-                    "on pref.codiceFiscale=ut.codiceFiscale inner join Prodotto pro on pref.codiceProdotto=pro.codiceProdotto" +
-                    "where ut.codiceFiscale=?");
+            PreparedStatement ps=connection.prepareStatement("select p.codiceProdotto, ut.codiceFiscale ,p.nome ,p.prezzo,p.nomeMarchio,p.quantita,p.idCategoria,p.pathImmagine,p.descrizione " +
+                    "from Prodotto p,Preferito pr,Utente ut where pr.codiceFiscale=ut.codiceFiscale and pr.codiceProdotto=p.codiceProdotto and ut.codiceFiscale=?");
             ps.setString(1,codiceFiscale);
+
 
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
                 Prodotto p= new Prodotto();
 
-                p.setCodiceProdotto(rs.getInt(12));
-              //  p.getCarrello().setCodiceCarrello(rs.getInt(13));
-                UtenteDAO utenteDAO= new UtenteDAO();
-                ArrayList<Utente> lista = utenteDAO.doRetraiveByAllUtenti();
-                for(Utente u : lista){
-                    if(u.getCodiceFiscale().equals(rs.getString(1))){
-                        p.addUtente(u);
-                    }
-                }
-                p.setNome(rs.getString(15));
-                p.setPrezzo(rs.getDouble(16));
-                p.getMarchio().setNomeMarchio(rs.getString(17));
-                p.setQuantita(rs.getInt(18));
-                p.getCategoria().setIdCategoria(rs.getInt(19));
+                p.setCodiceProdotto(rs.getInt("codiceProdotto"));
+                p.setNome(rs.getString("nome"));
+                p.setPrezzo(rs.getDouble("prezzo"));
+                Marchio marchio=new Marchio();
+                marchio.setNomeMarchio(rs.getString("nomeMarchio"));
+                p.setMarchio(marchio);
+                p.setQuantita(rs.getInt("quantita"));
+                Categoria categoria=new Categoria();
+                categoria.setIdCategoria(rs.getInt("idCategoria"));
+                p.setCategoria(categoria);
+                p.setPathImmagine(rs.getString("pathImmagine"));
                 prodottiPreferiti.add(p);
             }
         }catch (SQLException sqlException){
@@ -106,7 +104,6 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
 
         return prodottiPreferiti;
-
     }
 
     @Override
@@ -205,6 +202,33 @@ public class UtenteDAO implements UtenteDAOMethod {
         }
     }
 
+    @Override
+    public void insertPreferito(Utente utente, Prodotto prodotto) {
+        try(Connection connection=ConPool.getConnection()){
+            PreparedStatement ps= connection.prepareStatement("insert into Preferito value (?,?)", Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1,utente.getCodiceFiscale());
+            ps.setInt(2, prodotto.getCodiceProdotto());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+        }catch (SQLException sqlException){
+            throw new RuntimeException("insert error");
+        }
+    }
+
+    @Override
+    public void deletePreferito(Utente utente, Prodotto prodotto) {
+        try(Connection connection=ConPool.getConnection()){
+            PreparedStatement ps;
+            ps=connection.prepareStatement("delete from Preferito where codiceFiscale=? and codiceProdotto=?");
+            ps.setString(1, utente.getCodiceFiscale());
+            ps.setInt(2,prodotto.getCodiceProdotto());
+            ps.execute();
+        }catch (SQLException sqlException){
+            throw new RuntimeException(sqlException);
+        }
+    }
+
   /*  @Override
     public void updateUtente(Utente u, String codiceFiscale) {
         try (Connection connection = ConPool.getConnection()) {
@@ -240,6 +264,7 @@ public class UtenteDAO implements UtenteDAOMethod {
             ps.setString(2,utente.getCognome());
             ps.setString(3,utente.getEmail());
             ps.setString(4,utente.getPassword());
+            System.out.println("Password " + utente.getPassword());
             if(ps.executeUpdate()!=1){
                 //throw  new RuntimeException("Errore Update");
                 return  false;

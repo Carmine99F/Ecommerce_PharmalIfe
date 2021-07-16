@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.lang.reflect.Array" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.prodotto.Prodotto" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 08/07/2021
@@ -6,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%ArrayList<Prodotto> prodotti=(ArrayList<Prodotto>) request.getAttribute("prodotti");  %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -32,7 +35,18 @@
         <th>Elimina</th>
         <th>Aggiorna</th>
     </tr>
+    <%for(Prodotto p : prodotti) {  %>
     <tr>
+        <td><%=p.getCodiceProdotto()%></td>
+        <td><%=p.getNome()%></td>
+        <td><%=p.getCategoria().getNomeCategoria()%></td>
+        <td><%=p.getPrezzo()%> £ </td>
+        <td><%=p.getMarchio().getNomeMarchio()%></td>
+        <td><a href="">Delete</a></td>
+        <td><a href="">Update</a></td>
+    </tr>
+    <%  }  %>
+ <!--  <tr>
         <td>01</td>
         <td>Pilorex</td>
         <td>Integratore</td>
@@ -94,7 +108,7 @@
         <td>Pompa protonica</td>
         <td>Delete</td>
         <td>Update</td>
-    </tr>
+    </tr>-->
 </table>
 <button onclick="tornaIndietro()">Torna alla home Admin</button>
 <div class="center-pagination">

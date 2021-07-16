@@ -34,7 +34,7 @@
                 <button name="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
             </div>
             <button class="aggiungiAlCarrello">Aggiungi Al Carrello</button>
-            <a href=""> <i class="fas fa-heart" title="Aggiungi ai preferiti"></i></a>
+            <a href="ServletPreferiti?value=<%=prodotto.getCodiceProdotto()%>"> <i class="fas fa-heart" title="Aggiungi ai preferiti"></i></a>
         </div>
         <div class="descrizione">
             <div class="note">
@@ -42,12 +42,11 @@
                     <legend>Informazioni</legend>
                     Categoria :          Farmaco da Banco <br>
                     Codice Prodotto :    0PR00<%=prodotto.getCodiceProdotto()%><br>
-                    Descrizione :      <%=prodotto.getDescrrizione()%>
-                  <!--  OKI fa parte della categoria degli antiinfiammatori non steroidei. <br>
+                    Descrizione :
+                    OKI fa parte della categoria degli antiinfiammatori non steroidei. <br>
                     Trattamento sintomatico e di breve durata di stati infiammatori <br>
                     associati a dolore quali quelli a carico dell'apparato osteoarticolare<br>
-                    dolore post operatorio e otiti.-->
-
+                    dolore post operatorio e otiti.
                 </fieldset>
 
             </div>

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.prodotto.Prodotto" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 06/07/2021
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% ArrayList<Prodotto> prodotti=(ArrayList<Prodotto>) request.getAttribute("prodottiPref");%>
+<%String nonRegistrato=(String)request.getAttribute("nonRegistrato");%>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -17,121 +20,37 @@
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
-
+<% if(session.getAttribute("utente")==null){%>
+<h1 class="pref" style="text-align: center">Registrati per accedere all'area Preferiti</h1>
+<%} else{%>
 
 <h1 class="pref">LISTA DEI DESIDERI</h1><hr>
 
 
 <div class="flexpadre">
-    <div class="flex-padre2">
+    <%for(Prodotto p : prodotti) { %>
+   <!-- <div class="flex-padre2">-->
         <div class="flex-blocco">
             <div class="icona-delete">
-                <a href=""><i class="fas fa-trash-alt"></i></a>
+                <a href="ServletRimuoviPreferito?value=<%=p.getCodiceProdotto()%>"><i class="fas fa-trash-alt"></i></a>
             </div>
             <div class="image">
-                <img src="./immagini/aveeno-baby-bagnetto-testa-pie.jpg">
+                <img src="<%=application.getContextPath()%>/immaginiFarmaci/<%=p.getPathImmagine()%>">
             </div >
             <div>
-                <a href=""><p>AVEENO BABY BAGNETTO TESTA PIE</p></a>
-            </div>
-
-        </div>
-
-        <div class="flex-blocco">
-            <div class="icona-delete">
-                <a href=""><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="image">
-                <img src="./immagini/aveeno-baby-bagnetto-testa-pie.jpg">
-            </div >
-            <div>
-                <a href=""><p>AVEENO BABY BAGNETTO TESTA PIE</p></a>
+                <a href=""><p><%=p.getNome()%></p></a>
             </div>
         </div>
+        <%  }  %>
+ <!--   </div>-->
 
-        <div class="flex-blocco">
-            <div class="icona-delete">
-                <a href=""><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="image">
-                <img src="./immagini/aveeno-baby-bagnetto-testa-pie.jpg">
-            </div >
-            <div>
-                <a href=""><p>AVEENO BABY BAGNETTO TESTA PIE</p></a>
-            </div>
-        </div>
-
-        <div class="flex-blocco">
-            <div class="icona-delete">
-                <a href=""><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="image">
-                <img src="./immagini/aveeno-baby-bagnetto-testa-pie.jpg">
-            </div >
-            <div>
-                <a href=""><p>AVEENO BABY BAGNETTO TESTA PIE</p></a>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="flex-padre2">
-        <div class="flex-blocco">
-            <div class="icona-delete">
-                <a href=""><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="image">
-                <img src="./immagini/aveeno-baby-bagnetto-testa-pie.jpg">
-            </div >
-            <div>
-                <a href=""><p>AVEENO BABY BAGNETTO TESTA PIE</p></a>
-            </div>
-        </div>
-
-
-
-        <div class="flex-blocco">
-            <div class="icona-delete">
-                <a href=""><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="image">
-                <img src="./immagini/aveeno-baby-bagnetto-testa-pie.jpg">
-            </div >
-            <div>
-                <a href=""><p>AVEENO BABY BAGNETTO TESTA PIE</p></a>
-            </div>
-        </div>
-
-
-
-        <div class="flex-blocco">
-            <div class="icona-delete">
-                <a href=""><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="image">
-                <img src="./immagini/aveeno-baby-bagnetto-testa-pie.jpg">
-            </div >
-            <div>
-                <a href=""><p>AVEENO BABY BAGNETTO TESTA PIE</p></a>
-            </div>
-        </div>
-
-
-
-       <div class="flex-blocco">
-            <div class="icona-delete">
-                <a href=""><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="image">
-                <img src="./immagini/aveeno-baby-bagnetto-testa-pie.jpg">
-            </div >
-            <div>
-                <a href=""><p>AVEENO BABY BAGNETTO TESTA PIE</p></a>
-            </div>
-        </div>
-
-    </div>
 </div>
+<%}%>
+
+
+<!--
+<h1 class="pref">NON HAI PREFERITI</h1>>>
+-->
 
 <jsp:include page="default/footer.jsp"/>
 </body>

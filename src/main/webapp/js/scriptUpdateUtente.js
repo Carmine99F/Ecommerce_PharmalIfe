@@ -9,10 +9,13 @@ function  validazioneDati(){
     let password=$("#password");
     let newPassword=$("#newPassword");
 
-
+    alert(patternPassword.test());
     if(password.val()==newPassword.val()){
         newPassword.addClass("lampeggioBordo");
         alert("La nuova Password deve essere diversa dalla vecchia");
         return event.preventDefault();
+    }
+    if(!patternPassword.test(newPassword)){
+        alert("Non rispetta il formato");
     }
 }

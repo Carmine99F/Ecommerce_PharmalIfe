@@ -22,7 +22,7 @@
 
 
 <div class="imm-mano">
-    <img class="immMano" src="stretta-di-mano--1280x720.jpg" alt="immMano">
+    <img class="immMano" src="./immagini/stretta-di-mano--1280x720.jpg" alt="immMano">
 </div>
 
 <p class="scritta-mano">Messaggio inviato con successo, sii paziente e ci sarà un nostro collaboratore pronto ad aiutarti.
@@ -31,7 +31,7 @@
 <div class="bottone-ass">
 
     <form method="get" action="ServletLink">
-        <input type="button" value="Torna alla homepage" onclick="location.href=<%=application.getContextPath()%>" style="
+        <input type="button" value="Torna alla homepage" onclick="location.href='/ProgettoTSW_war_exploded/index.jsp'" style="
     background-color: #096900;
     width: 18em;
     padding: .5em;

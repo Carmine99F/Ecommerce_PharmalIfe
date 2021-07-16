@@ -1,6 +1,7 @@
 package model.prodotto;
 
 import model.categoria.Categoria;
+import model.categoria.CategoriaDAO;
 import model.marchio.Marchio;
 import model.storage.ConPool;
 import model.utente.Utente;
@@ -148,23 +149,28 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             ArrayList<Prodotto> lista = new ArrayList<>();
             while (rs.next()) {
                 Prodotto prodotto = new Prodotto();
-                prodotto.setCodiceProdotto(rs.getInt(1));
-                // prodotto.getCarrello().setCodiceCarrello(rs.getInt(2));
-                //    prodotto.getUtente().setCodiceFiscale(rs.getString(3)); NULL
-                prodotto.setNome(rs.getString(4));
-                prodotto.setPrezzo(rs.getInt(5));
-                // prodotto.getMarchio().setNomeMarchio(rs.getString(6));
-                prodotto.setQuantita(rs.getInt(7));
-                prodotto.setPathImmagine(rs.getString(9));
-                prodotto.setDescrrizione(rs.getString(10));
-                //    prodotto.getCategoria().setIdCategoria(rs.getInt(8));
+                prodotto.setCodiceProdotto(rs.getInt("codiceProdotto"));
+                prodotto.setNome(rs.getString("nome"));
+                prodotto.setPrezzo(rs.getDouble("prezzo"));
+                Marchio m= new Marchio();
+                m.setNomeMarchio(rs.getString("nomeMarchio"));
+                prodotto.setMarchio(m);
+                prodotto.setQuantita(rs.getInt("quantita"));
+                CategoriaDAO categoriaDAO= new CategoriaDAO();
+                Categoria categoria=categoriaDAO.cercaCategoriaById(rs.getInt("idCategoria"));
+              //  categoria.setIdCategoria(rs.getInt("idCategoria"));
+                prodotto.setCategoria(categoria);
+                prodotto.setPathImmagine(rs.getString("pathImmagine"));
+                prodotto.setDescrrizione(rs.getString("descrizione"));
                 lista.add(prodotto);
+
             }
             connection.close();
             return lista;
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
         }
+
     }
 
     @Override
@@ -277,6 +283,42 @@ public class ProdottoDAO implements ProdottoDAOMethod {
             return prodotti;
 
         } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
+    }
+
+
+    public ArrayList<Prodotto> cercaProdottiMarchio(String nomeMarchio, int start, int end) {
+        try (Connection connection = ConPool.getConnection()) {
+            ArrayList<Prodotto> prodotti = new ArrayList<>();
+            PreparedStatement ps = connection.prepareStatement("select p.codiceProdotto,p.nome,p.prezzo,p.nomeMarchio,p.quantita," +
+                    "p.idCategoria,p.pathImmagine,p.descrizione " +
+                    "from Prodotto p,Marchio m where p.nomeMarchio=m.nomeMarchio and ?= m.nomeMarchio limit ?,?;");
+            ps.setString(1, nomeMarchio);
+            ps.setInt(2, start);
+            ps.setInt(3, end);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Prodotto p = new Prodotto();
+                p.setCodiceProdotto(rs.getInt("codiceProdotto"));
+
+
+                p.setNome(rs.getString("nome"));
+                p.setPrezzo(rs.getDouble("prezzo"));
+                Marchio m = new Marchio();
+                m.setNomeMarchio(rs.getString("nomeMarchio"));
+                p.setMarchio(m);
+                p.setQuantita(rs.getInt("quantita"));
+                Categoria c = new Categoria();
+                c.setIdCategoria(rs.getInt("idCategoria"));
+                p.setCategoria(c);
+                p.setPathImmagine(rs.getString("pathImmagine"));
+                p.setDescrrizione(rs.getString("descrizione"));
+                prodotti.add(p);
+            }
+            return prodotti;
+
+        } catch(SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
     }

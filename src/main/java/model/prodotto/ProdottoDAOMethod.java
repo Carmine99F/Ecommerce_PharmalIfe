@@ -1,12 +1,13 @@
 package model.prodotto;
 
+import model.marchio.Marchio;
 import model.utente.Utente;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 public interface ProdottoDAOMethod {
     public Prodotto cercaProdotto(int codiceProdotto);
+    public ArrayList<Prodotto> cercaProdottiMarchio(String nomeMarchio,int start,int end);
     public void deleteProdotto(int codiceProdotto);
     public void insertProdotto(Prodotto p);
     public void updateProdotto(Prodotto p, int codiceProdotto);

@@ -16,6 +16,8 @@ public interface UtenteDAOMethod {
     public ArrayList<Messaggio> messaggiAllUtenti();
     public void deleteUtente (String codiceFiscale);
     public void insertUtente (Utente u);
+    public void insertPreferito(Utente utente,Prodotto prodotto);
+    public void deletePreferito(Utente utente,Prodotto prodotto);
    // public void updateUtente (Utente u, String codiceFiscale);
     public boolean updateUtente(Utente utente);
     public void updateIndirizzoUtente(Utente utente);

@@ -1,18 +1,23 @@
 .flexpadre{
     display: flex;
-    width: 90%;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 300px;
     background-color: white;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    justify-content: space-between;
-    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
 
 }
 
 .flex-blocco{
     display: flex;
-    width: 20%;
+    flex-basis: 30%;
+   /* height: 40%;*/
     background-color: white;
     flex-direction: column;
     text-align: center;
@@ -48,7 +53,7 @@ h1.pref{
     color: dimgray;
     margin: 8px 8px;
 }
-.flex-padre2{
+/*.flex-padre2{
     display: flex;
     width: 90%;
     background-color: white;
@@ -56,16 +61,19 @@ h1.pref{
     margin: auto;
     justify-content: center;
 
-}
+}*/
 
 
 @media screen  and (max-width: 550px) {
-    .flex-padre2{
+  /*  .flex-padre{
         flex-direction: column;
+    }*/
+    .flex-padre{
+        margin-bottom: 700px;
     }
 
     .flex-blocco{
-        width: 90%;
+        flex-basis: 90%;
 
     }
 }

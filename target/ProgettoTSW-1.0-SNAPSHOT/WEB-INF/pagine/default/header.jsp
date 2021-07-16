@@ -32,7 +32,7 @@
                 <a   href="https://www.facebook.com/pharmalife.ivane.5" class="icone"> <i class="fab fa-facebook-f" style="color: limegreen;font-size: 30px" ></i></a>
                 <a   href="ServletAssistenza" class="icone"> <i class="fas fa-phone-square" style="color: limegreen;font-size: 30px"></i> </a>
                 <a   href="ServletLink?scelta=carrello" class="icone"><i class="fas fa-shopping-cart" style="color: limegreen;font-size: 30px"></i></a>
-                <a  title="Logout" href="ServletLink?scelta=preferiti" class="icone"><i class="far fa-heart" style="color: limegreen;font-size: 30px"></i> </a>
+                <a  title="Logout" href="ServletMostraPref" class="icone"><i class="far fa-heart" style="color: limegreen;font-size: 30px"></i> </a>
                 <% if(utente!=null){%>
                 <a  style="order: 6" href="ServletAccessoUtente?value=logout" class="icone"><i class="fas fa-sign-out-alt" style="color: limegreen;font-size: 30px"></i></a>
                 <% }%>
@@ -68,30 +68,34 @@
             </div>
         </div>
     </div>
-   <div class="dropdown">
-       <button class="dropbtn">Marchi</button>
-       <div class="dropdown-content">
-           <div class="row">
-               <div class="colum">
+    <div class="dropdown">
+        <button class="dropbtn">Marchi</button>
+        <div class="dropdown-content">
+            <div class="row">
+                <div class="colum">
                     <%for(int i=0;i< (marchi.size()/2)+1;i++){   %>
-                   <a href=""><%=marchi.get(i).getNomeMarchio()%></a>
-                   <% } %>
-              <!--    <a href="#">Link 2</a>
-                   <a href="#">Link 3</a>-->
-               </div>
-               <div class="colum">
-                   <% for(int i= (marchi.size()/2)+1;i<marchi.size();i++){  %>
-                   <a href=""><%=marchi.get(i).getNomeMarchio()%></a>
-                   <%  } %>
-                <!--  <a href="#">Link 1</a>
-                   <a href="#">Link 2</a>
-                   <a href="#">Link 3</a>-->
-               </div>
-           </div>
-       </div>
-   </div>
+                    <a href="ServletListaMarchi?value=<%=marchi.get(i).getNomeMarchio()%>&nomejsp=header">
+                        <%=marchi.get(i).getNomeMarchio()%></a>
+                    <% } %>
+                    <!--    <a href="#">Link 2</a>
+                         <a href="#">Link 3</a>-->
+                </div>
+                <div class="colum">
+                    <% for(int i= (marchi.size()/2)+1;i<marchi.size();i++){  %>
+                    <a href="ServletListaMarchi?value=<%=marchi.get(i).getNomeMarchio()%>&nomejsp=header">
+                        <%=marchi.get(i).getNomeMarchio()%></a>
+                    <%  } %>
+                    <!--  <a href="#">Link 1</a>
+                       <a href="#">Link 2</a>
+                       <a href="#">Link 3</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
     <a href="ServletLink?scelta=infoAzienda">Chi siamo</a>
     <a href="ServletAssistenza">Contatti</a>
+    <%if(utente!=null) {  %>
     <a href="ServletLink?scelta=assistenza">Ti Aiutiamo Noi</a>
+    <%   } %>
 </nav>
 

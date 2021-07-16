@@ -1,4 +1,4 @@
-<%--
+<%@ page import="model.utente.Utente" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 06/07/2021
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%Utente utente=(Utente)session.getAttribute("utente"); %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -17,6 +18,8 @@
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
+
+<%if(utente!=null){   %>
 <h1 class="assistenza">TI AIUTIAMO NOI</h1>
 <h1 class="assistenza">CI PENSA PHARMALIFE</h1><br>
 
@@ -55,6 +58,9 @@
         </form>
     </div>
 </div>
+<% } else { %>
+<h1 class="assistenza">Registrati per accedere all'area Assistenza</h1>
+<% } %>
 <jsp:include page="default/footer.jsp"/>
 </body>
 </html>
