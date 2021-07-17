@@ -146,3 +146,9 @@
         margin-left: 0;
     }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+    .contatti-box {
+        margin-top: 200px;
+        flex-basis: 10%;
+    }
+}

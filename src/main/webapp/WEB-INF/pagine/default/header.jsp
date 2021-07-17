@@ -73,21 +73,18 @@
         <div class="dropdown-content">
             <div class="row">
                 <div class="colum">
-                    <%for(int i=0;i< (marchi.size()/2)+1;i++){   %>
+                    <%for(int i=0;i<(marchi.size()/2)+1;i++){   %>
                     <a href="ServletListaMarchi?value=<%=marchi.get(i).getNomeMarchio()%>&nomejsp=header">
                         <%=marchi.get(i).getNomeMarchio()%></a>
                     <% } %>
-                    <!--    <a href="#">Link 2</a>
-                         <a href="#">Link 3</a>-->
+
                 </div>
                 <div class="colum">
                     <% for(int i= (marchi.size()/2)+1;i<marchi.size();i++){  %>
                     <a href="ServletListaMarchi?value=<%=marchi.get(i).getNomeMarchio()%>&nomejsp=header">
                         <%=marchi.get(i).getNomeMarchio()%></a>
                     <%  } %>
-                    <!--  <a href="#">Link 1</a>
-                       <a href="#">Link 2</a>
-                       <a href="#">Link 3</a>-->
+
                 </div>
             </div>
         </div>

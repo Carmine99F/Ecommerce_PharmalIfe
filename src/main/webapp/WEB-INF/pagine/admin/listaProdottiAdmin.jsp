@@ -42,7 +42,7 @@
         <td><%=p.getCategoria().getNomeCategoria()%></td>
         <td><%=p.getPrezzo()%> £ </td>
         <td><%=p.getMarchio().getNomeMarchio()%></td>
-        <td><a href="">Delete</a></td>
+        <td><a href="ServletDeleteProdottoAdmin?id=<%=p.getCodiceProdotto()%>">Delete</a></td>
         <td><a href="">Update</a></td>
     </tr>
     <%  }  %>

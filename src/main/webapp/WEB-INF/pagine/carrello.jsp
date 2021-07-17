@@ -34,6 +34,7 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleCarrello"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="js/header.js" type="text/javascript" defer></script>
     <style>
         h2{
@@ -80,9 +81,9 @@
             </div>
             <div class="card-quantita">
                 <div class="quantita">
-                    <button name="incrementa" onclick="incrementa()"><i class="fas fa-plus"></i></button>
+                    <button class="incrementa" onclick="incrementa()"><i class="fas fa-plus"></i></button>
                     <input class="totale-prodotti" type="number" min="1" max="30" value="1">
-                    <button name="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
+                    <button class="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
                 </div>
             </div>
             <div class="total-delete">
@@ -95,115 +96,14 @@
             </div>
         </div>
 <%  } %>
-    <!-- <div class="card-prodotti">
-            <div class="immagine-card-prodotti">
-                <img src="https://faimed.it/5177-cart_default/filorga-time-filler-crema-50ml.jpg" alt="filorga-time-filler-crema-50ml">
-            </div>
-            <div class="info-card-prodotti">
-                <a class="label" href="">
-                    FILORGA TIME FILLER CREMA 50ML</a>
-                <div class="product-discount">
-                    <span class="regular-price" style="text-decoration: line-through;">65,00&nbsp;€ </span>
-                    <span class="discount-percentage"> -55,54% </background> </span>
-                </div>
-                <div class="current-price">
-                    <span class="price">28,90&nbsp;€</span>
-                </div>
-            </div>
-            <div class="card-quantita">
-                <div class="quantita">
-                    <button name="incrementa" onclick="incrementa()"><i class="fas fa-plus"></i></button>
-                    <input class="totale-prodotti" type="number" min="1" max="30" value="1">
-                    <button name="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
-                </div>
-            </div>
-            <div class="total-delete">
-                    <span class="product-price">
-                        <strong> 86,70 &nbsp;€</strong>
-                    </span>
-                <a href="">
-                    <i class="fas fa-trash-alt"></i>
-                </a>
-            </div>
-        </div>
 
-
-         <div class="card-prodotti">
-             <div class="immagine-card-prodotti">
-                 <img src="https://faimed.it/5177-cart_default/filorga-time-filler-crema-50ml.jpg" alt="filorga-time-filler-crema-50ml">
-             </div>
-             <div class="info-card-prodotti">
-                 <a class="label" href="">
-                     FILORGA TIME FILLER CREMA 50ML</a>
-                 <div class="product-discount">
-                     <span class="regular-price" style="text-decoration: line-through;">65,00&nbsp;€ </span>
-                     <span class="discount-percentage"> -55,54% </background> </span>
-                 </div>
-                 <div class="current-price">
-                     <span class="price">28,90&nbsp;€</span>
-                 </div>
-             </div>
-             <div class="card-quantita">
-                 <div class="quantita">
-                     <button name="incrementa" onclick="incrementa()"><i class="fas fa-plus"></i></button>
-                     <input class="totale-prodotti" type="number" min="1" max="30" value="1">
-                     <button name="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
-                 </div>
-             </div>
-             <div class="total-delete">
-                    <span class="product-price">
-                        <strong> 86,70 &nbsp;€</strong>
-                    </span>
-                 <a href="">
-                     <i class="fas fa-trash-alt"></i>
-                 </a>
-             </div>
-         </div>-->
-
-
-
-
-
-
-
-   <!--     <div class="card-prodotti">
-            <div class="immagine-card-prodotti">
-                <img src="https://faimed.it/5177-cart_default/filorga-time-filler-crema-50ml.jpg" alt="filorga-time-filler-crema-50ml">
-            </div>
-            <div class="info-card-prodotti">
-                <a class="label" href="">
-                    FILORGA TIME FILLER CREMA 50ML</a>
-                <div class="product-discount">
-                    <span class="regular-price" style="text-decoration: line-through;">65,00&nbsp;€ </span>
-                    <span class="discount-percentage"> -55,54% </background> </span>
-                </div>
-                <div class="current-price">
-                    <span class="price">28,90&nbsp;€</span>
-                </div>
-            </div>
-            <div class="card-quantita">
-                <div class="quantita">
-                    <button name="incrementa" onclick="incrementa()"><i class="fas fa-plus"></i></button>
-                    <input class="totale-prodotti" type="number" min="1" max="30" value="1">
-                    <button name="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
-                </div>
-            </div>
-            <div class="total-delete">
-                    <span class="product-price">
-                        <strong> 86,70 &nbsp;€</strong>
-                    </span>
-                <a href="">
-                    <i class="fas fa-trash-alt"></i>
-                </a>
-            </div>
-        </div>-->
          <div class="continua-shopping">
              <a class="shopping" href="https://faimed.it/">
                  <i class="fas fa-chevron-left">Continua lo shopping</i>
              </a>
          </div>
 
-         <div class="center-pagination">
+  <!--       <div class="center-pagination">
              <div class="pagination">
                  <a href="#">&laquo;</a>
                  <a href="#" class="active">1</a>
@@ -214,7 +114,7 @@
                  <a href="#">6</a>
                  <a href="#">&raquo;</a>
              </div>
-         </div>
+         </div>-->
 
     </div>
 
@@ -261,5 +161,13 @@
     </div>
 <% } %>
 <jsp:include page="default/footer.jsp"/>
+<script>
+    $(document).ready(function (){
+        $('button.incrementa').click(function (e) {
+            $(e.delegateTarget).next('.totale-prodotti');
+        });
+    });
+
+</script>
 </body>
 </html>

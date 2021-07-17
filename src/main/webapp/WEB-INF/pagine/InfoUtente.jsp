@@ -41,7 +41,7 @@
 
             <div class="input-info">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome"  name="nome" value="<%=utente.getNome()%>" required>
+                <input type="text" id="nome"  name="nome" value="<%=utente.getNome()%>" disabled>
             </div>
             <div class="input-info">
                 <label for="cognome">Cognome</label>
@@ -53,13 +53,13 @@
             </div>
             <div class="input-info">
                 <label for="password">Password</label>
-                <input   type="password" id="password" name="password" value="" required>
+                <input   type="password" id="password" name="password" value="" onClick="showPwd('password', this)" required>
                 <i  id="psw" class="fas fa-eye-slash"></i>
             </div>
             <div class="input-info">
                 <label for="newPassword">Nuova Password</label>
                 <input type="password" id="newPassword"  name="newPassword" value="" required>
-                <i id="pswRepeat" class="fas fa-eye"  onclick="changeIcon()"></i>
+                <i id="pswRepeat" class="fas fa-eye" onClick="showPwd('newPassword', this)" ></i>
             </div>
         </div>
         <div class="info">
@@ -77,16 +77,15 @@
 
 <jsp:include page="default/footer.jsp"/>
 <script>
-    function changeIcon(){
-
-        var x=document.getElementById("psw");
-        x.style.color="red";
-
-            if(x.className==="as fa-eye-slash"){
-                x.classList.remove("as fa-eye-slash");
-                x.classList.add("fas fa-eye")
-            }
-
+    function showPwd(id, el) {
+        let x = document.getElementById(id);
+        if (x.type === "password") {
+            x.type = "text";
+            el.className = 'fa fa-eye showpwd';
+        } else {
+            x.type = "password";
+            el.className = 'fa fa-eye-slash showpwd';
+        }
     }
 
 </script>

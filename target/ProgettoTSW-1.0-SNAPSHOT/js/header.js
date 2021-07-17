@@ -11,7 +11,7 @@ function mostraMenu() {
 
 
 
-var x=document.querySelectorAll("#slider a i");
+/*var x=document.querySelectorAll("#slider a i");
 var y=document.querySelectorAll(".img_slide img");
 
 console.log(getComputedStyle(y[1],null).getPropertyValue("width"))
@@ -66,4 +66,4 @@ function immaginePrecedente(){
     document.querySelector(" #slider .img_slide:nth-child(" + immagineCorrente +")").style.display="block";
 
 }
-setInterval(immagineSuccessiva,9000);
+setInterval(immagineSuccessiva,9000);*/

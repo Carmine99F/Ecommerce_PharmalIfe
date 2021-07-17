@@ -15,6 +15,8 @@
         <jsp:param name="style" value="styleHeader,styleFooter,styleSchedaProdotto"/>
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="js/aggiungiProdotto.js" type="text/javascript"defer></script>
     <script src="js/header.js" type="text/javascript" defer></script>
 </head>
 <body>
@@ -26,14 +28,15 @@
     </div>
     <div class="infoProdotto">
 
-        <h2><%=prodotto.getNome()%>   <%=prodotto.getPrezzo()%>£</h2>
+        <h2><%=prodotto.getNome()%> - <%=prodotto.getPrezzo()%>£</h2>
+
         <div class="bottoni">
             <div class="quantita">
                 <button name="incrementa" onclick="incrementa()"><i class="fas fa-plus"></i></button>
                 <input id="quantita" type="number" min="1" max="30" value="1">
                 <button name="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
             </div>
-            <button class="aggiungiAlCarrello">Aggiungi Al Carrello</button>
+            <button onclick="aggiungiAlCarrello(<%=prodotto.getCodiceProdotto()%>)" class="aggiungiAlCarrello">Aggiungi Al Carrello</button>
             <a href="ServletPreferiti?value=<%=prodotto.getCodiceProdotto()%>"> <i class="fas fa-heart" title="Aggiungi ai preferiti"></i></a>
         </div>
         <div class="descrizione">
@@ -42,11 +45,13 @@
                     <legend>Informazioni</legend>
                     Categoria :          Farmaco da Banco <br>
                     Codice Prodotto :    0PR00<%=prodotto.getCodiceProdotto()%><br>
-                    Descrizione :
-                    OKI fa parte della categoria degli antiinfiammatori non steroidei. <br>
+                    Marchio       :      <%=prodotto.getMarchio().getNomeMarchio()%><br>
+                    Descrizione :       <%=prodotto.getDescrrizione()%><br>
+                  <!-- OKI fa parte della categoria degli antiinfiammatori non steroidei. <br>
                     Trattamento sintomatico e di breve durata di stati infiammatori <br>
                     associati a dolore quali quelli a carico dell'apparato osteoarticolare<br>
-                    dolore post operatorio e otiti.
+                    dolore post operatorio e otiti.-->
+
                 </fieldset>
 
             </div>
@@ -64,7 +69,7 @@
 </div>
 <jsp:include page="default/footer.jsp"/>
 <script>
-    function incrementa(){
+  function incrementa(){
         var x= document.getElementById("quantita").value;
         x++;
         document.getElementById("quantita").value=x;
@@ -77,6 +82,7 @@
         }
         document.getElementById("quantita").value=x;
     }
+
 </script>
 </body>
 </html>

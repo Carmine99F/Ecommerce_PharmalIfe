@@ -20,6 +20,7 @@
     </jsp:include>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="js/aggiungiProdotto.js" type="text/javascript"defer></script>
+
     <script src="./js/header.js" type="text/javascript" defer></script>
 </head>
 <body>
@@ -27,7 +28,7 @@
 
 <div id="container-prodotti">
     <aside>
-        <form class="products" action="" method="post">
+        <form class="products" action="ServletFilter" method="get">
             <div class="filtraggio">
                 <label for="nome">Nome</label>
                 <input id="nome" type="text">
@@ -51,6 +52,7 @@
     </aside>
    <main>
         <div class="filter">
+            <h2 style="text-align: center"></h2>
             <select id="ordinamento" name="ordine">
                 <option value="menoCaro">Dal meno caro al più caro</option>
                 <option value="piuCaro">Dal più caro al meno caro</option>
@@ -70,13 +72,14 @@
                     </figcaption>
                 </figure>
                 <div class="aggiungi">
-                    <form action="ServletAggiungiAlCarrello" method="post">
-                        <input type="hidden" name="prodotto" value="<%=p.getCodiceProdotto()%>">
+                <!--    <form action="ServletAggiungiAlCarrello" method="post">-->
+                        <input type="hidden"id="idProdotto" name="prodotto" value="<%=p.getCodiceProdotto()%>">
                    <!--     <input type="hidden" name="nomeJsp" value="listaProdotti">-->
                         <span class="iconaCarrello" > <i class="fas fa-cart-plus"></i> </span>
-                        <span class="btn"><button type="submit">Aggiungi Al Carrello</button></span>
+                      <!--  <span class="btn"><button onclick="aggiungiAlCarrello()" type="submit" > Aggiungi Al Carrello</button></span>-->
+                        <span class="btn"><button onclick="aggiungiAlCarrello(<%=p.getCodiceProdotto()%>)" > Aggiungi Al Carrello</button></span>
                         <span style="display: inline;float: right;color:gray;padding: 2px;margin-top: 4px;border-radius: 4px;"><%=p.getPrezzo()%>$</span>
-                    </form>
+                <!--    </form>-->
 
                 </div>
             </article>

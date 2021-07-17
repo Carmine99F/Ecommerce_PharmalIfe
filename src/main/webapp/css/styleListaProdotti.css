@@ -133,7 +133,7 @@ main .filter{
     height: 30%;
     background-color: inherit;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-around;
     margin-bottom: 30px;
 }
 .filter select{
@@ -347,7 +347,7 @@ span.btn button{
         flex-direction: column;
         width: 100%;
         background-color: inherit;
-        margin-bottom: 1880px;
+        margin-bottom: 2880px;
 
     }
     /*aside{

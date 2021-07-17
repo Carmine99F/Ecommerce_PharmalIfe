@@ -39,73 +39,11 @@
 
     </tr>
     <%  }  %>
- <!--   <tr>
-        <td> amtonio@gmail.com </td>
-        <td  class="messaggio"> <a href=""> sadasdsadasdasdadasd sadkaasfnalfnhlas fnhlkasfnlak</a></td>
-        <td>29/02/2026</td>
-        <td>10:55</td>
 
-    </tr>
-    <tr>
-        <td> amtonio@gmail.com </td>
-        <td> <a href=""> sto avendo problemi con il numero</a></td>
-        <td>29/02/2026</td>
-        <td>10:55</td>
-
-    </tr>
-    <tr>
-        <td> amtonio@gmail.com </td>
-        <td> <a href=""> sto avendo problemi con il numero</a></td>
-        <td>29/02/2026</td>
-        <td>10:55</td>
-    </tr>
-    <tr>
-        <td> amtonio@gmail.com </td>
-        <td> <a href=""> sto avendo problemi con il numero</a></td>
-        <td>29/02/2026</td>
-        <td>10:55</td>
-    </tr>
-    <tr>
-        <td> amtonio@gmail.com </td>
-        <td> <a href=""> sto avendo problemi con il numero</a></td>
-        <td>29/02/2026</td>
-        <td>10:55</td>
-    </tr>
-    <tr>
-        <td> amtonio@gmail.com </td>
-        <td> <a href=""> sto avendo problemi con il numero</a></td>
-        <td>29/02/2026</td>
-        <td>10:55</td>
-    </tr>
-    <tr>
-        <td> amtonio@gmail.com </td>
-        <td> <a href=""> sto avendo problemi con il numero</a></td>
-        <td>29/02/2026</td>
-        <td>10:55</td>
-    </tr>
-    <tr>
-        <td> amtonio@gmail.com </td>
-        <td> <a href=""> sto avendo problemi con il numero</a></td>
-        <td>29/02/2026</td>
-        <td>10:55</td>
-    </tr>-->
 </table>
 <%  } else { %>
 <h1> Non ci sono messaggi</h1>
 <%  } %>
-<div class="center-pagination">
-    <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#" class="active">1</a>
-        <a href="#" >2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
-    </div>
-</div>
-
 
 </div>
 

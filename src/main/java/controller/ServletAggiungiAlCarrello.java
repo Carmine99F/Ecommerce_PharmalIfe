@@ -18,6 +18,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int idProdotto=Integer.parseInt(request.getParameter("prodotto"));
+        System.out.println("Id prodotto " + idProdotto );
         HttpSession session=request.getSession();
         Utente utente=(Utente) session.getAttribute("utente");
         ProdottoDAO prodottoDAO= new ProdottoDAO();
@@ -26,12 +27,12 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
           //Carrello carrello=(Carrello) session.getAttribute("carrello");
             //System.out.println("Carrello " + utente.getCarrello());
             if(utente.getCarrello()!=null){
-                System.out.println("Carrellooo esistente" + utente.getCarrello());
+               // System.out.println("Carrellooo esistente" + utente.getCarrello());
                 utente.getCarrello().addProdotto(prodotto);
 
                 //session.setAttribute("carrello",carrello1);
             }else {
-                System.out.println("Carrello non esiste " +utente.getCarrello());
+            //    System.out.println("Carrello non esiste " +utente.getCarrello());
                 Carrello carrello1= new Carrello();
                 carrello1.addProdotto(prodotto);
                 utente.setCarrello(carrello1);
@@ -45,7 +46,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
                 Carrello carrello1= new Carrello();
                 carrello1.addProdotto(prodotto);
                 session.setAttribute("carrello",carrello1);
-                session.setMaxInactiveInterval(40);
+                session.setMaxInactiveInterval(10);
             }
           /*  carrello.addProdotto(prodotto);
             session=request.getSession();
@@ -53,7 +54,7 @@ public class ServletAggiungiAlCarrello extends HttpServlet {
             session.setMaxInactiveInterval(5000);*/
 
         }
-
+       response.getWriter().write("Prodotto Aggiunto nel carrello");
       //  response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"WEB-INF/pagine/listaProdotti.jsp"));
      //   RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/pagine/listaProdotti.jsp");
        // dispatcher.forward(request,response);
