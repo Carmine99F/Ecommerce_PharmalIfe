@@ -5,6 +5,8 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/InfoUtente.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/admin/assistenzaUtenti.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/admin/statistiche.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/admin/updateProdottoAdmin.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/admin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/areaAmministratore.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/assistenza.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/azienda.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
@@ -18,8 +20,10 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/listaProdottiAdmin.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/messaggioInviato.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/mioAccount.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/mostraOrdini.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/preferiti.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/schedaProdotto.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine/updateIndirizzo.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pagine" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/errore500.html" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/footer.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />

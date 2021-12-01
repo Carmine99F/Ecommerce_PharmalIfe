@@ -144,3 +144,12 @@ i{
 }
 
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    .flex-container {
+        align-content: space-around;
+        justify-content: space-around;
+    }
+    .flex-item {
+        flex-basis: 35%;
+    }
+}

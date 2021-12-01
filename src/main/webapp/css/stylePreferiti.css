@@ -77,3 +77,10 @@ h1.pref{
 
     }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+    .flexpadre{
+        width: 97%;
+        height: 50%;
+        margin-top: 5px;
+    }
+}

@@ -4,7 +4,7 @@
 
 .container-index{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
 }
 .top-header{
     flex-basis: 100%;
@@ -17,6 +17,7 @@
 }
 .info{
     text-align: center;
+
 }
 .logo{
     display: flex;
@@ -55,6 +56,7 @@
     transform: translateX(-140%);
     z-index: 1;
 }
+
 .linkMenu{
     display: none;
 }
@@ -164,20 +166,28 @@ nav a:hover , .dropdown:hover .dropbtn{
     display: table;
     clear: both;
 }
-
-
+/*Rimuove il trinagolo del datalist*/
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+/*
+datalist option{
+    background-color: limegreen;
+    color: white;
+    padding: 5px;
+}*/
 @media screen and (max-width: 550px) {
 
     .top-header{
-        flex-flow: column wrap ;
+      /*  flex-flow: column wrap;*/
+       /* flex-direction: column;*/
+
     }
     .logo{
         flex-flow: column wrap;
         background-color: white;
         align-items: center;
         background-color: white;
-
-
     }
     .logo :nth-child(1){
         order: 2;
@@ -210,6 +220,7 @@ nav a:hover , .dropdown:hover .dropbtn{
     nav{
       display: none;
       flex-direction: column;
+
     }
     nav .home{
         background-color: white;

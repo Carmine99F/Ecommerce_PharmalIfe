@@ -26,8 +26,7 @@ public class ServletListaProdotti extends HttpServlet {
         int idCategoria=Integer.parseInt(request.getParameter("value"));
         String nomejsp=request.getParameter("nomejsp");
         System.out.println("Nome jsp " + nomejsp);
-        //String nomeJsp=request.getParameter("nomeJsp");
-     //   System.out.println("nome Jsp" + nomeJsp);
+
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         if(nomejsp.equals("header")){
             start=0;
@@ -35,13 +34,10 @@ public class ServletListaProdotti extends HttpServlet {
             start+=9;
         }
         ArrayList<Prodotto> prodotti= prodottoDAO.cercaProdotti(idCategoria,start,end);
-      // System.out.println("Size " + prodotti.size());
-      //  if(nomeJsp.equalsIgnoreCase("listaProdotti")){
-         //   start+=9;
-     //   }
+
 
         HttpSession session=request.getSession();
-        System.out.println("start " + start + " end " +end);
+       // System.out.println("start " + start + " end " +end);
         request.setAttribute("prodotti",prodotti);
         request.setAttribute("idCategoria",idCategoria);
         request.setAttribute("opzione",opzione);

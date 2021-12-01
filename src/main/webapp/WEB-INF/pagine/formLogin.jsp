@@ -49,7 +49,8 @@
                 </div>
                 <div class="input-fields">
                     <label id="password"  class="label">Password</label><br>
-                    <input type="password"  name="password" class="input" id="password" placeholder="Password" required>
+                    <input type="password"  name="password" class="input" id="passw" placeholder="password" required>
+
                 </div>
                 <div class="forgot">
                     <a href="#">Hai dimenticato la password?</a><br>
@@ -63,6 +64,8 @@
 </div>
 
 <jsp:include page="default/footer.jsp"/>
+
+
 
 </body>
 

@@ -21,21 +21,18 @@ public class ServletMostraPref extends HttpServlet {
 
 
         HttpSession session = request.getSession();
-        String nonRegistrato;
+
 
         if (session != null) {
             UtenteDAO service = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
 
             if(utente != null) {
-                nonRegistrato = "UTENTE REGISTRATO";
+
                 ArrayList<Prodotto> prodottiPref = new ArrayList<>();
                 prodottiPref = service.preferiti(utente.getCodiceFiscale());
                 request.setAttribute("prodottiPref", prodottiPref);
-                request.setAttribute("nonRegistrato", nonRegistrato);
-            } else {
-                nonRegistrato = "UTENTE NON REGISTRATO";
-                request.setAttribute("nonRegistrato", nonRegistrato);
+
             }
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pagine/preferiti.jsp");

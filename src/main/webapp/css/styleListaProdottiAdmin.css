@@ -4,18 +4,20 @@
     box-sizing: border-box;
 }
 
-.list {
+/*h1.list {
     text-align: center;
     padding: 10px;
     color: #009fe3;
-}
+}*/
 
 table{
     display: flex;
-    width: 60%;
+    width: 80%;
     background-color: white;
 
-    margin: 20px auto 40px;
+  /*  margin: 20px auto 40px;*/
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 table{
     border: none;
@@ -39,6 +41,7 @@ td{
 }
 td a{
     text-decoration: none;
+    cursor: pointer;
 }
 tr:nth-child(even) {background-color: #e0f1ff/*#f2f2f2*/;}
 

@@ -1,7 +1,9 @@
 <%@ page import="model.carrello.Carrello" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.prodotto.Prodotto" %>
-<%@ page import="model.utente.Utente" %><%--
+<%@ page import="model.utente.Utente" %>
+<%@ page import="java.io.ByteArrayOutputStream" %>
+<%@ page import="java.io.ObjectOutputStream" %><%--
   Created by IntelliJ IDEA.
   User: Amministratore
   Date: 13/07/2021
@@ -10,23 +12,21 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%Carrello carrello=(Carrello)session.getAttribute("carrello"); %>
-<%Utente utente=(Utente) session.getAttribute("utente"); %>
+<% Carrello carrello=(Carrello)session.getAttribute("carrello");   %>
+<%Utente utente=(Utente)session.getAttribute("utente");  %>
+<%ArrayList<Prodotto> prodotti=null;   %>
 <%
-    ArrayList<Prodotto> prodotti=null;
-    if(carrello!=null){
-        prodotti= carrello.getProdotti();
-    }else{
-        if(utente!=null){
-            if(utente.getCarrello()!=null){
-                prodotti=utente.getCarrello().getProdotti();
-            }
-
+    if(utente!=null) {
+        if(utente.getCarrello()!=null) {
+            prodotti=utente.getCarrello().getProdotti();
+        }
+    }else {
+        if(carrello!=null) {
+            prodotti = carrello.getProdotti();
         }
     }
-%>
 
+%>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -42,21 +42,24 @@
             color: deepskyblue;
         }
     </style>
-
-
 </head>
 <body>
 
 <jsp:include page="default/header.jsp"/>
-<%  if(prodotti==null) { %>
-<h2>Il tuo Carrello è vuoto, acquista per aggiungere prodotti al carrello</h2>
-<%  } else { %>
-<% if(utente!=null) {  %>
-<h2>Ecco il tuo  carrello  <%=utente.getNome()%> <%=utente.getCognome()%> </h2>
-<%  }  else { %>
+<% if(utente!=null){ if(utente.getCarrello()==null) { %>
+<h2>  <%=utente.getNome()%> il tuo carrello è vuoto </h2>
+<% }else {   %>
+<h2> Ecco il tuo Carrello <%=utente.getNome()%></h2>
+<%  }  }else { if(carrello!=null) { %>
 <h2>Ecco il tuo carrello Visitatore</h2>
-<%  }   %>
+<%  } else {  %>
+<h2>Il tuo carrelo è vuoto</h2>
+<% } %>
 
+<% }  %>
+
+
+<% if(prodotti!=null){  %>
 
 <div class="include-tutto">
      <div class="lista-prodotti">
@@ -70,67 +73,41 @@
             </div>
             <div class="info-card-prodotti">
                 <a class="label" href="">
-                  <%=p.getNome()%> - <%=p.getMarchio().getNomeMarchio()%> </a>
+                  <%=p.getNome()%>
+                    <% System.out.println("Marchio " + p.getMarchio().getNomeMarchio());  %>
+                </a>
                 <div class="product-discount">
                     <span class="regular-price" style="text-decoration: line-through;"> <%=p.getPrezzo()%> € </span>
-                    <span class="discount-percentage"> -55,54% </background> </span>
+                    <span class="discount-percentage"> -50% </background> </span>
                 </div>
                 <div class="current-price">
-                    <span class="price"> 12 €</span>
+                    <span class="price"> <%=p.getPrezzo()/2%> €</span>
                 </div>
             </div>
-            <div class="card-quantita">
-                <div class="quantita">
-                    <button class="incrementa" onclick="incrementa()"><i class="fas fa-plus"></i></button>
-                    <input class="totale-prodotti" type="number" min="1" max="30" value="1">
-                    <button class="decremento" onclick="decrementa()"><i class="fas fa-minus"></i></button>
-                </div>
-            </div>
+
             <div class="total-delete">
-                    <span class="product-price">
-                        <strong> 86,70 &nbsp;€</strong>
-                    </span>
-                <a href="">
+
+                <a href="ServletRimuoviDalCarrello?value=<%=p.getCodiceProdotto()%>">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </div>
         </div>
 <%  } %>
-
-         <div class="continua-shopping">
-             <a class="shopping" href="https://faimed.it/">
-                 <i class="fas fa-chevron-left">Continua lo shopping</i>
-             </a>
-         </div>
-
-  <!--       <div class="center-pagination">
-             <div class="pagination">
-                 <a href="#">&laquo;</a>
-                 <a href="#" class="active">1</a>
-                 <a href="#" >2</a>
-                 <a href="#">3</a>
-                 <a href="#">4</a>
-                 <a href="#">5</a>
-                 <a href="#">6</a>
-                 <a href="#">&raquo;</a>
-             </div>
-         </div>-->
-
     </div>
 
 
     <div class="cassa">
-        <div class="numero-articoli">
-            <span class="label js-subtotal">3 articoli</span>
-            <span class="value"> 86,70&nbsp;€ </span>
-        </div>
         <div class="spedizione">
-            <span class="label"> Spedizione </span>
-            <span class="value"> Gratis </span>
+            <span style="margin-top: 10px" class="label"> Spedizione </span>
+            <span style="margin-top: 10px" class="value"> Gratis </span>
         </div>
         <div class="totale">
             <span class="label">Totale&nbsp;(Tasse incl.)</span>
-            <span class="value"> 86,70&nbsp;€ </span>
+            <% if(utente!=null) { %>
+            <span class="value"> <%=utente.getCarrello().getTotalePrezzo()/2%>&nbsp;€ </span>
+            <% } else{  %>
+            <span class="value"> <%=carrello.getTotalePrezzo()/2%>&nbsp;€ </span>
+            <% } %>
         </div>
         <div class="codice-sconto">
             <p class="promo-code-button display-promo">
@@ -152,22 +129,23 @@
             </div>
         </div>
         <div class="checkout">
+
             <div class="text-centered">
-                <a href="https://faimed.it/ordine" class="button-outline">Vai in cassa</a>
+                <% if (utente != null) { %>
+                <form action="ServletOrdini" method="post">
+                    <input type="submit" href="ServletOrdini" class="button-outline" value="Vai alla cassa"></input>
+                </form>
+                <% } else if (utente==null) { %>
+                <h3> ACCEDI PER ACQUISTARE </h3>
+                <% } %>
             </div>
         </div>
     </div>
 
     </div>
-<% } %>
+<% }else { %>
+<h2>Non ci sono prodotti nel carrello</h2>
+<%  }  %>
 <jsp:include page="default/footer.jsp"/>
-<script>
-    $(document).ready(function (){
-        $('button.incrementa').click(function (e) {
-            $(e.delegateTarget).next('.totale-prodotti');
-        });
-    });
-
-</script>
 </body>
 </html>

@@ -1,12 +1,8 @@
-<%@ page import="model.utente.Utente" %><%--
-  Created by IntelliJ IDEA.
-  User: Amministratore
-  Date: 06/07/2021
-  Time: 12:32
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.utente.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%Utente utente=(Utente)session.getAttribute("utente"); %>
+<%String invioMessaggio=(String) request.getAttribute("assistenza");%>
+<% System.out.println(invioMessaggio); %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -15,9 +11,19 @@
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
     <script src="js/header.js" type="text/javascript" defer></script>
+    <style>
+        h3{
+            text-align: center;
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
+
+<% if(invioMessaggio!=null){ %>
+<h3><%=invioMessaggio%></h3>
+<% }  %>
 
 <%if(utente!=null){   %>
 <h1 class="assistenza">TI AIUTIAMO NOI</h1>

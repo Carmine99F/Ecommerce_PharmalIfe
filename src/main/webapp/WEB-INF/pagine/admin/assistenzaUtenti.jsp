@@ -21,7 +21,7 @@
 <jsp:include page="../default/header.jsp"/>
 <% if(messaggi!=null) {%>
 
-<h1>Assistena Utenti</h1>
+<h1>ASSISTENZA UTENTI</h1>
 <table>
     <tr>
         <th>EMAIL</th>

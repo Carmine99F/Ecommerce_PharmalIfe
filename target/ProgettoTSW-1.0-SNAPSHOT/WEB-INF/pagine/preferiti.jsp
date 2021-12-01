@@ -8,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% ArrayList<Prodotto> prodotti=(ArrayList<Prodotto>) request.getAttribute("prodottiPref");%>
-<%String nonRegistrato=(String)request.getAttribute("nonRegistrato");%>
+
 <html>
 <head>
     <jsp:include page="/WEB-INF/pagine/default/head.jsp">
@@ -20,11 +20,14 @@
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
+
 <% if(session.getAttribute("utente")==null){%>
 <h1 class="pref" style="text-align: center">Registrati per accedere all'area Preferiti</h1>
-<%} else{%>
-
+<%} else if(prodotti.isEmpty()){%>
+<h1 class="pref">NON HAI PREFERITI</h1><hr>
+<%} else {%>
 <h1 class="pref">LISTA DEI DESIDERI</h1><hr>
+
 
 
 <div class="flexpadre">
@@ -45,7 +48,7 @@
  <!--   </div>-->
 
 </div>
-<%}%>
+<% }%>
 
 
 <!--

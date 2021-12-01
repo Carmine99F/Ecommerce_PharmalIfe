@@ -187,9 +187,7 @@ footer{
         visibility: visible;
     }
 
-    .menuScorrimento:active .dropdown-content-footer  {
-        display: block;
-    }
+
 
     .dropdown-content-footer{
         display: none;

@@ -127,6 +127,8 @@
     }
     .contatti-box{
         flex-basis: 50%;
+        height: 200px;
+
     }
     .contatti-padre p{
         font-size: 15px;
@@ -142,13 +144,42 @@
     }
 
     .imm-contatti {
+        display: flex;
+
         flex-direction: column;
-        margin-left: 0;
+        align-content: center;
+    }
+
+    .imm-contatti-testo{
+        padding: 0px;
+        flex-basis: 60%;
+        width: 70%;
+    }
+
+    .immContatti {
+        display: flex;
+        flex-basis: 20%;
+        width: 400px;
+        height: 300px;
+        margin-bottom: 10px;
+    }
+
+    .imm-contatti-testo p {
+
+
+        font-size: large;
+
     }
 }
+
+
+
 @media (min-width: 768px) and (max-width: 1024px) {
     .contatti-box {
         margin-top: 200px;
         flex-basis: 10%;
     }
+
+
+
 }

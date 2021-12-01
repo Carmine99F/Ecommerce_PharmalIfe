@@ -5,11 +5,10 @@ import model.categoria.CategoriaDAO;
 import model.marchio.Marchio;
 import model.storage.ConPool;
 import model.utente.Utente;
-import model.utente.UtenteDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Optional;
+import java.util.Collections;
 
 public class ProdottoDAO implements ProdottoDAOMethod {
 
@@ -23,28 +22,54 @@ public class ProdottoDAO implements ProdottoDAOMethod {
                 Prodotto prodotto = new Prodotto();
                 prodotto.setCodiceProdotto(resultSet.getInt("codiceProdotto"));
 
-             /*   UtenteDAO utenteDAO= new UtenteDAO();
-                ArrayList<Utente> lista = utenteDAO.doRetraiveByAllUtenti();
-                for(Utente u : lista){
-                    if(u.getCodiceFiscale().equals(resultSet.getString(3))){
-                        prodotto.addUtente(u);
-                    }
-                }*/
                 prodotto.setNome(resultSet.getString("nome"));
                 prodotto.setPrezzo(resultSet.getInt("prezzo"));
                 Marchio m = new Marchio();
                 m.setNomeMarchio(resultSet.getString("nomeMarchio"));
                 prodotto.setMarchio(m);
-                //  prodotto.getMarchio().setNomeMarchio(resultSet.getString("nomeMarchio"));
+
                 prodotto.setQuantita(resultSet.getInt("quantita"));
-                Categoria c = new Categoria();
-                c.setIdCategoria(resultSet.getInt("idCategoria"));
+                CategoriaDAO categoriaDAO= new CategoriaDAO();
+                Categoria c = categoriaDAO.cercaCategoriaById(resultSet.getInt("idCategoria"));
+
                 prodotto.setCategoria(c);
                 prodotto.setPathImmagine(resultSet.getString("pathImmagine"));
                 prodotto.setDescrrizione(resultSet.getString("descrizione"));
                 return prodotto;
             }
         } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
+        return null;
+    }
+
+    @Override
+    public Prodotto cercaProdottoByNome(String nomeprodotto) {
+        try(Connection connection=ConPool.getConnection()){
+            PreparedStatement ps=connection.prepareStatement("select * from prodotto where nome = ?");
+            ps.setString(1,nomeprodotto);
+            ResultSet resultSet=ps.executeQuery();
+            if(resultSet.next()){
+                Prodotto prodotto= new Prodotto();
+                prodotto.setCodiceProdotto(resultSet.getInt("codiceProdotto"));
+
+                prodotto.setNome(resultSet.getString("nome"));
+                prodotto.setPrezzo(resultSet.getInt("prezzo"));
+                Marchio m = new Marchio();
+                m.setNomeMarchio(resultSet.getString("nomeMarchio"));
+                prodotto.setMarchio(m);
+
+                prodotto.setQuantita(resultSet.getInt("quantita"));
+                CategoriaDAO categoriaDAO= new CategoriaDAO();
+                Categoria c = categoriaDAO.cercaCategoriaById(resultSet.getInt("idCategoria"));
+
+                prodotto.setCategoria(c);
+                prodotto.setPathImmagine(resultSet.getString("pathImmagine"));
+                prodotto.setDescrrizione(resultSet.getString("descrizione"));
+                return  prodotto;
+            }
+
+        }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
         return null;
@@ -96,7 +121,7 @@ public class ProdottoDAO implements ProdottoDAOMethod {
 
 
     @Override
-    public void updateProdotto(Prodotto p, int codiceProdotto) {
+    /*public void updateProdotto(Prodotto p, int codiceProdotto) {
         try (Connection connection = ConPool.getConnection()) {
             PreparedStatement ps;
             ps = connection.prepareStatement("update Messaggio set codiceCarrello = ?, nome = ?, prezzo = ?," +
@@ -116,12 +141,24 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         } catch (SQLException sqlException) {
             throw new RuntimeException(sqlException);
         }
+    }*/
+    public void updateProdotto(Prodotto p) {
+        try (Connection connection = ConPool.getConnection()) {
+            PreparedStatement ps;
+            ps = connection.prepareStatement("update Prodotto set nome = ?, prezzo = ?"+
+                    "where codiceProdotto = ?");
+            ps.setString(1, p.getNome());
+            ps.setDouble(2, p.getPrezzo());
+            ps.setInt(3, p.getCodiceProdotto());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("update error");
+            }
+        } catch (SQLException sqlException) {
+            throw new RuntimeException(sqlException);
+        }
     }
 
-    @Override
-    public void aggiungiUtente(Utente utente) {
 
-    }
 
    /* @Override
     public void aggiungiUtente(int codiceProdotto,Utente utente) {
@@ -321,5 +358,103 @@ public class ProdottoDAO implements ProdottoDAOMethod {
         } catch(SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
+    }
+
+    @Override
+    public ArrayList<Prodotto> prodotttoSearch(String start) {
+        try(Connection connection=ConPool.getConnection()){
+            PreparedStatement ps=connection.prepareStatement("select  * from Prodotto where nome like ?");
+            ps.setString(1, start + "%");
+            ArrayList<Prodotto> prodotti= new ArrayList<>();
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+
+
+                Prodotto p = new Prodotto();
+                p.setCodiceProdotto(rs.getInt("codiceProdotto"));
+
+
+                p.setNome(rs.getString("nome"));
+                p.setPrezzo(rs.getDouble("prezzo"));
+                Marchio m = new Marchio();
+                m.setNomeMarchio(rs.getString("nomeMarchio"));
+                p.setMarchio(m);
+                p.setQuantita(rs.getInt("quantita"));
+                Categoria c = new Categoria();
+                c.setIdCategoria(rs.getInt("idCategoria"));
+                p.setCategoria(c);
+                p.setPathImmagine(rs.getString("pathImmagine"));
+                p.setDescrrizione(rs.getString("descrizione"));
+
+                prodotti.add(p);
+            }
+            return prodotti;
+        }catch (SQLException sqlException){
+            throw new RuntimeException(sqlException);
+        }
+
+    }
+    public ArrayList<Prodotto> FiltroNome(ArrayList<Prodotto> prodotti,String nome){
+        ArrayList<Prodotto> prodotti2=new ArrayList<>();
+        for (Prodotto p :prodotti){
+            if(p.getNome().contains(nome)) {
+                prodotti2.add(p);
+            }
+        }
+        return prodotti2;
+    }
+
+
+    public ArrayList<Prodotto> FiltroCategoria(ArrayList<Prodotto> prodotti,String nomeCategoria){
+        ArrayList<Prodotto> prodotti2=new ArrayList<>();
+        for (Prodotto p :prodotti){
+            if(p.getCategoria().getNomeCategoria().contains(nomeCategoria)) {
+                prodotti2.add(p);
+            }
+        }
+        return prodotti2;
+    }
+
+
+    public ArrayList<Prodotto> FiltroMin(ArrayList<Prodotto> prodotti,double min){
+        ArrayList<Prodotto> prodotti2=new ArrayList<>();
+        for (Prodotto p :prodotti){
+            if(p.getPrezzo()>=min) {
+                prodotti2.add(p);
+            }
+        }
+        return prodotti2;
+    }
+
+
+    public ArrayList<Prodotto> FiltroMax(ArrayList<Prodotto> prodotti,double max){
+        ArrayList<Prodotto> prodotti2=new ArrayList<>();
+        for (Prodotto p :prodotti){
+            if(p.getPrezzo()<=max) {
+                prodotti2.add(p);
+            }
+        }
+        return prodotti2;
+    }
+
+
+    public ArrayList<Prodotto> FiltroMarchio(ArrayList<Prodotto> prodotti,String nomeMarchio){
+        ArrayList<Prodotto> prodotti2=new ArrayList<>();
+        for (Prodotto p :prodotti){
+            if(p.getMarchio().getNomeMarchio().contains(nomeMarchio)) {
+                prodotti2.add(p);
+            }
+        }
+        return prodotti2;
+    }
+
+    public ArrayList<Prodotto> OrdinaDallaAallaZ(ArrayList<Prodotto> prodotti){
+        Collections.sort(prodotti,new ComparatorProdottoNome());
+        return prodotti;
+    }
+
+    public ArrayList<Prodotto> OrdinaDalMenoCaroAlPiuCaro(ArrayList<Prodotto> prodotti){
+        Collections.sort(prodotti,new ComparatorProdottoPrezzo());
+        return prodotti;
     }
 }

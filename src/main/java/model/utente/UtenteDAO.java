@@ -276,22 +276,24 @@ public class UtenteDAO implements UtenteDAOMethod {
     }
 
     @Override
-    public void updateIndirizzoUtente(Utente utente) {
+    public boolean updateIndirizzoUtente(Utente utente) {
 
         try(Connection connection=ConPool.getConnection()){
             PreparedStatement ps;
-            ps=connection.prepareStatement("update Utente set via = ? , numeroCivico = ? , cap = ? where = ? ");
-            ps.setString(5, utente.getCodiceFiscale());
+            ps=connection.prepareStatement("update Utente set via = ? , numeroCivico = ? , cap = ? where codiceFiscale = ? ");
+            ps.setString(4, utente.getCodiceFiscale());
             ps.setString(1, utente.getVia());
             ps.setInt(2,utente.getNumeroCivico());
             ps.setString(3, utente.getCap());
             if(ps.executeUpdate()!=1){
-                throw new RuntimeException("Errore Update");
+                return false;
+               // throw new RuntimeException("Errore Update");
             }
 
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
+        return  true;
     }
 
 

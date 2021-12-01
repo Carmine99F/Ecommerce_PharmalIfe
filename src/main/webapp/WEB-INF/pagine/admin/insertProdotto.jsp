@@ -17,7 +17,7 @@
 </head>
 <body>
 <jsp:include page="../default/header.jsp"/>
-
+<a onclick="tornaIndietro()" class="myButtonTorna">Torna indietro</a>
 <h1 class="insert">AGGIUNGI UN NUOVO PRODOTTO</h1>
 
 <form  class="insert" action="ServletInsertProdotto" method="POST" name="insert">
@@ -52,5 +52,11 @@
     <input type="submit" value="INSERISCI">
 </form>
 <jsp:include page="../default/footer.jsp"/>
+<script>
+    function tornaIndietro(){
+        window.history.back();
+    }
+
+</script>
 </body>
 </html>

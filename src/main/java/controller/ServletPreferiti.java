@@ -22,16 +22,19 @@ public class ServletPreferiti extends HttpServlet {
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
         ProdottoDAO prodottoDAO=new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
-
+        String risposta="";
         if(session != null) {
             UtenteDAO service = new UtenteDAO();
             Utente utente = (Utente) session.getAttribute("utente");
 
             if (utente != null) {
                 service.insertPreferito(utente, prodotto);
+                risposta="Prodotto Aggiunto ai Preferiti";
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request,response);
+            System.out.println("ciao");
+         //   RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+          //  dispatcher.forward(request,response);
+            response.getWriter().write(risposta);
         }
     }
 

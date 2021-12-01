@@ -23,7 +23,8 @@ function  validazioneIscrizione(){
         nome.addClass("lampeggioBordo");
         alert("Il nome deve essere formato solo da lettere e deve contenere almeno tre caratteri");
         return event.preventDefault();
-    }else{
+    }
+    else {
         nome.removeClass("lampeggioBordo");
     }
 
@@ -31,7 +32,8 @@ function  validazioneIscrizione(){
         cognomeUtente.addClass("lampeggioBordo");
         alert("Il cognome deve essere formato solo da lettere e deve contenere almeno tre caratteri");
         return event.preventDefault();
-    }else{
+    }
+    else {
         cognomeUtente.removeClass("lampeggioBordo");
     }
 
@@ -39,7 +41,8 @@ function  validazioneIscrizione(){
         codiceFiscale.addClass("lampeggioBordo");
         alert("Codice fiscale non valido");
         return event.preventDefault();
-    }else{
+    }
+    else {
         codiceFiscale.removeClass("lampeggioBordo");
     }
 
@@ -47,7 +50,8 @@ function  validazioneIscrizione(){
         emailUtente.addClass("lampeggioBordo");
         alert("Formato email non valido");
         return event.preventDefault();
-    }else{
+    }
+    else {
         emailUtente.removeClass("lampeggioBordo");
     }
 
@@ -55,7 +59,8 @@ function  validazioneIscrizione(){
         password.addClass("lampeggioBordo");
         alert("La password deve contenere almeno una lettera minuscola, una maiuscola e un numero");
         return event.preventDefault();
-    }else{
+    }
+    else {
         password.removeClass("lampeggioBordo");
     }
 
@@ -63,7 +68,8 @@ function  validazioneIscrizione(){
         passwordRepeat.addClass("lampeggioBordo");
         alert("La password non coincide con quella digitata precedentemente");
         return event.preventDefault();
-    }else{
+    }
+    else {
         passwordRepeat.removeClass("lampeggioBordo");
     }
 
@@ -71,7 +77,8 @@ function  validazioneIscrizione(){
         numeroCivico.addClass("lampeggioBordo");
         alert("Il numero civico deve contenere solo numeri (da una a tre cifre)");
         return event.preventDefault();
-    }else{
+    }
+    else {
         numeroCivico.removeClass("lampeggioBordo");
     }
 
@@ -79,7 +86,8 @@ function  validazioneIscrizione(){
         cap.addClass("lampeggioBordo");
         alert("Il cap deve contenere esattamente 5 cifre");
         return event.preventDefault();
-    }else{
+    }
+    else {
         cap.removeClass("lampeggioBordo");
     }
 
@@ -87,8 +95,8 @@ function  validazioneIscrizione(){
         telefono.addClass("lampeggioBordo");
         alert("Il numero di telefono deve contenere esattamente 10 cifre");
         return event.preventDefault();
-    }else{
+    }
+    else {
         telefono.removeClass("lampeggioBordo");
     }
 }
-

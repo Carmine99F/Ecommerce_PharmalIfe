@@ -3,6 +3,7 @@ package controller;
 import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
 import model.utente.Utente;
+import model.utente.UtenteDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ public class ServletInvioMessaggio extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String address = "WEB-INF/pagine/messaggioInviato.jsp";
         String nomeUtente=request.getParameter("firstname");
         String cognome=request.getParameter("lastname");
         String telefono=request.getParameter("telefono");
@@ -45,14 +47,38 @@ public class ServletInvioMessaggio extends HttpServlet {
         m.setTesto(messaggio);
         m.setData(data2);
         m.setOra(time1);
-        //m.setOra(ora);
-        //u.setCodiceFiscale(cf);
+
+        UtenteDAO utenteDAO= new UtenteDAO();
+        Utente utente1 = (Utente) utenteDAO.cercaUtente(utente.getCodiceFiscale());
+        System.out.println(utente.getCodiceFiscale());
+        //Utente utente1=utenteDAO.cercaUtente(nomeUtente);
+        String up="";
+
+        if (utente1 != null) {
+            if (!utente1.getNome().equals(u.getNome())) {
+                address = "WEB-INF/pagine/assistenza.jsp";
+                up="Il nome non coincide con quello dell'utente loggato";
+            }
+            if (!utente1.getCognome().equals(u.getCognome())) {
+                address = "WEB-INF/pagine/assistenza.jsp";
+                up="Il cognome non coincide con quello dell'utente loggato";
+            }
+            if (!utente1.getTelefono().equals(u.getTelefono())) {
+                address = "WEB-INF/pagine/assistenza.jsp";
+                up="Il numero di telefono non coincide con quello dell'utente loggato";
+            }
+            if (!utente1.getEmail().equals(u.getEmail())) {
+                address = "WEB-INF/pagine/assistenza.jsp";
+                up="L'email non coincide con quella dell'utente loggato";
+            }
+        }
 
         m.setUtente(u);
         service.insertMessaggio(m);
 
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/pagine/messaggioInviato.jsp");
+        request.setAttribute("assistenza",up);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+        //RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/pagine/messaggioInviato.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -13,6 +13,7 @@
     flex-basis: 70%;
     border: 1px solid lightgray;
     height: 90%;
+    overflow-y: auto;
 }
 
 .titolo {
@@ -226,12 +227,15 @@ a.button-outline:hover {
 }
 
 .button-outline {
+    outline: none;
+    border: none;
     color: #FFFFFF;
     font-size: 20px;
     background-color: #009FE3;
     padding: 8px 16px;
     text-decoration: none;
     text-align: center;
+    cursor: pointer;
 }
 
 .center-pagination{
@@ -291,7 +295,7 @@ a.button-outline:hover {
         flex-basis: 40%;
         width: 100%;
         height: 1000px;
-        background-color:pin;
+        /*background-color:pin;*/
         flex-direction: column;
         align-items: center;
         border-bottom: 1px solid lightgray;
@@ -300,7 +304,7 @@ a.button-outline:hover {
     .immagine-card-prodotti {
         /* width: 50%;*/
         width: 10%;
-        background-color: yellow;
+
         flex-basis: 40%;
     }
 
@@ -327,11 +331,10 @@ a.button-outline:hover {
     }
     .regular-price {
         font: 11px;
-
     }
     .current-price{
         font: 8px;
-        padding: 0%;
+        padding-top: 10px;
     }
     .price{
         top: 0%;
@@ -363,5 +366,22 @@ a.button-outline:hover {
 
     .center-pagination{
         left: 12%;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .include-tutto {
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .cassa{
+        border: none;
+        margin-right: 0px;
+    }
+
+
+    .lista-prodotti {
+
+        border: none;
     }
 }

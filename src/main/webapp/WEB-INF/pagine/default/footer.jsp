@@ -29,7 +29,6 @@
                 84084 - Salerno
             </p>
         </div>
-        <!-- <img src="./immagini/Farmacia-logo.png" alt="Logo Farmacia" width="100" height="100">-->
     </div>
 
 
@@ -50,7 +49,11 @@
         <div class="dropdown-content-footer">
             <a href="ServletLink?scelta=login">Accedi</a>
             <a href="ServletLink?scelta=mioAccount">Il Mio Account</a>
-            <a href="">I Miei Ordini</a>
+            <% if(session.getAttribute("utente")!=null){  %>
+            <a href="ServletLink?scelta=ordini">I Miei Ordini</a>
+            <%  }  else { %>
+            <a style="cursor: pointer" onclick="alert('Registrati per accedere')">I Miei Ordini</a>
+            <%  }  %>
             <a href="">I Miei Indirizzi</a>
             <a href="">Controlla Ordine Ospite</a>
             <a href="ServletLink?scelta=iscriviti">Registrati</a>
@@ -91,16 +94,6 @@
     </div>
 </footer>
 
-<!--<div class="flex-scritta">
-
-</div>-->
-
-
-
-
-
-
-
 <script>
     function mostraMenuINFORMAZIONI1() {
         var x = document.getElementsByClassName("dropdown-content-footer")[1];
@@ -118,6 +111,7 @@
             x.style.display = "block";
         }
     }
+
 
 
 </script>

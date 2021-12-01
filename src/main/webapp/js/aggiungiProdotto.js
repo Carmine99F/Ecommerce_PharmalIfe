@@ -4,22 +4,34 @@
          });
      });
 
-
+$.ajaxSetup({
+    "type":"post",
+    "success": function (data){
+        //alert("sss" )
+        $("h2").text(data);
+        $("h2").css("visibility","visible");
+        $("h2").css("color","red");
+        setTimeout(function (){
+            $("h2").css("visibility","hidden")
+        },4000)
+    }
+})
 
  function  aggiungiAlCarrello(idProdotto){
 
+     var total=$("#quantita").val();
+
      $.ajax({
-         "type":"post",
-         "url" : "ServletAggiungiAlCarrello",
-         "data":"prodotto="+ idProdotto,
-         "success": function (data){
-             //alert("sss" )
-             $("h2").text(data);
-            $("h2").css("visibility","visible");
-             $("h2").css("color","red");
-             setTimeout(function (){
-                 $("h2").css("visibility","hidden")
-             },4000)
-         }
+         "url":"ServletAggiungiAlCarrello",
+         "data":"prodotto="+idProdotto +"&totale="+total,
+     })
+ }
+
+ function  aggiungiAiPreferiti(idProdotto){
+
+
+     $.ajax({
+         "url":"ServletPreferiti",
+         "data":"value="+idProdotto,
      })
  }

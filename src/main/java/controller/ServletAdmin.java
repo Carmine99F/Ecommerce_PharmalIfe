@@ -2,9 +2,11 @@ package controller;
 
 import model.messaggio.Messaggio;
 import model.messaggio.MessaggioDAO;
+import model.ordine.OrdineDAO;
 import model.prodotto.Prodotto;
 import model.prodotto.ProdottoDAO;
 import model.utente.Utente;
+import model.utente.UtenteDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,30 +31,29 @@ public class ServletAdmin extends HttpServlet {
             String valore=request.getParameter("value");
             String pagina="";
             switch (valore){
-                case "listaProdotti" :
-                    ProdottoDAO prodottoDAO=new ProdottoDAO();
-                    ArrayList<Prodotto> prodotti= prodottoDAO.doRetraiveByAllProdotti();
-                    request.setAttribute("prodotti",prodotti);
-                    pagina="WEB-INF/pagine/admin/listaProdottiAdmin.jsp";
-                break;
+
                 case "insertProdotto" :
                     pagina="WEB-INF/pagine/admin/insertProdotto.jsp";
                 break;
-                case "insertCategoria" :
-                    pagina="";
-                break;
-                case "insertMarchio"
-                        :pagina="";
-                break;
-                case "listaUtenti"
-                        :pagina="";
-                break;
+
                 case "messaggi":
                     MessaggioDAO messaggioDAO= new MessaggioDAO();
                     ArrayList<Messaggio> messaggi= messaggioDAO.doRetraiveByAllMessaggi();
                     request.setAttribute("messaggi",messaggi);
                     pagina="WEB-INF/pagine/admin/assistenzaUtenti.jsp";
                 break;
+                case "statistiche":
+                    MessaggioDAO messaggioDAO1= new MessaggioDAO();
+                    ProdottoDAO prodottoDAO1= new ProdottoDAO();
+                    UtenteDAO utenteDAO= new UtenteDAO();
+                    OrdineDAO ordineDAO= new OrdineDAO();
+                    request.setAttribute("messaggi",Integer.parseInt(String.valueOf(messaggioDAO1.doRetraiveByAllMessaggi().size())));
+                    request.setAttribute("utenti",Integer.parseInt(String.valueOf(utenteDAO.doRetraiveByAllUtenti().size())));
+                    request.setAttribute("prodotti",Integer.parseInt(String.valueOf(prodottoDAO1.doRetraiveByAllProdotti().size())));
+                    request.setAttribute("ordini",Integer.parseInt(String.valueOf(ordineDAO.doRetraiveByAllOrdini().size())));
+                    pagina="WEB-INF/pagine/admin/statistiche.jsp";
+                    break;
+
 
             }
             RequestDispatcher dispatcher=request.getRequestDispatcher(pagina);

@@ -1,5 +1,6 @@
 package model.ordine;
 
+import model.carrello.Carrello;
 import model.storage.ConPool;
 import model.utente.Utente;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class OrdineDAO implements OrdineDAOMethod {
-    public Optional<Ordine> cercaOrdine(int idOrdine) {
+    public Ordine cercaOrdine(int idOrdine) {
 
         try(Connection connection= ConPool.getConnection()){
 
@@ -20,14 +21,16 @@ public class OrdineDAO implements OrdineDAOMethod {
             if (rs.next()){
                 Ordine ordine= new Ordine();
                 ordine.setIdOrdine(rs.getInt(1));
-                ordine.setDataOrdine(rs.getDate(2));
-                ordine.setOra(rs.getTime(3));
-                return Optional.of(ordine);
+                ordine.setDataOrdine(rs.getDate("dataOrdine"));
+                ordine.setOra(rs.getTime("oraOrdine"));
+                ordine.getCarrello().setListaProdottiString(rs.getString("listaProdotti"));
+                ordine.getUtente().setCodiceFiscale(rs.getString("cfUtente"));
+               return ordine;
             }
         }catch (SQLException sqlException){
 
         }
-        return Optional.empty();
+        return null;
 
     }
 
@@ -48,10 +51,14 @@ public class OrdineDAO implements OrdineDAOMethod {
     public void insertCarrello(Ordine o) {
         try (Connection connection = ConPool.getConnection()) {
 
-            PreparedStatement ps = connection.prepareStatement("insert into Ordine value (?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            ps.setDate(1, (Date) o.getDataOrdine());
+            System.out.println("wee");
+            PreparedStatement ps = connection.prepareStatement("insert into Ordine(dataOrdine,oraOrdine,listaProdotti,cfUtente) " +
+                    "value (?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            ps.setDate(1, o.getDataOrdine());
             ps.setTime(2, o.getOra());
-            ps.setString(3, o.getUtente().getCodiceFiscale());
+
+            ps.setString(3,o.getUtente().getCarrello().prodottiToString().toString());
+            ps.setString(4, o.getUtente().getCodiceFiscale());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -59,7 +66,7 @@ public class OrdineDAO implements OrdineDAOMethod {
             rs.next();
             int id = rs.getInt(1);
             o.setIdOrdine(id);
-            ps.execute();
+
         } catch (SQLException sqlException) {
 
         }
@@ -94,7 +101,10 @@ public class OrdineDAO implements OrdineDAOMethod {
                 ordine.setIdOrdine(rs.getInt(1));
                 ordine.setDataOrdine(rs.getDate(2));
                 ordine.setOra(rs.getTime(3));
-                ordine.getUtente().setCodiceFiscale(rs.getString(4));
+                Utente utente= new Utente();
+                utente.setCodiceFiscale(rs.getString(4));
+                ordine.setUtente(utente);
+             //   ordine.getUtente().setCodiceFiscale(rs.getString(4));
                 lista.add(ordine);
             }
             connection.close();
@@ -138,16 +148,27 @@ public class OrdineDAO implements OrdineDAOMethod {
             ResultSet rs= ps.executeQuery();
             while (rs.next()){
 
-                Ordine o= new Ordine();
-                o.setIdOrdine(rs.getInt(1));
-                o.setDataOrdine(rs.getDate(2));
-                o.setOra(rs.getTime(3));
-                o.getUtente().setCodiceFiscale(rs.getString(4));
-                ordini.add(o);
+                Ordine ordine= new Ordine();
+                ordine.setIdOrdine(rs.getInt(1));
+                ordine.setDataOrdine(rs.getDate("dataOrdine"));
+                ordine.setOra(rs.getTime("oraOrdine"));
+                Carrello carrello= new Carrello();
+                carrello.setListaProdottiString(rs.getString("listaProdotti"));
+                ordine.setCarrello(carrello);
+              //  ordine.getCarrello().setListaProdottiString(rs.getString("listaProdotti"));
+                Utente utente1= new Utente();
+                utente1.setCodiceFiscale(rs.getString("cfUtente"));
+                ordine.setUtente(utente);
+              //  ordine.getUtente().setCodiceFiscale(rs.getString("cfUtente"));
+                ordini.add(ordine);
             }
         }catch (SQLException sqlException){
             throw new RuntimeException(sqlException);
         }
         return ordini;
     }
+
+
+
+
 }

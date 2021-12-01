@@ -9,21 +9,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%ArrayList<Categoria> categorie=(ArrayList<Categoria>) application.getAttribute("categorie"); %>
 
-
-<!--<div id="slider">
-   <div class="img_slide">
-        <img src="./immagini/unnamed.jpg">
-    </div>
-    <div class="img_slide">
-        <img src="./immagini/01_medicine-plus-preview.__large_preview.jpg" >
-    </div>
-    <div class="img_slide">
-        <img src="./immagini/slide-1-1-1243x500.jpg">
-    </div>
-    <a class="prev" onmouseover="immaginePrecedente()">  <i class="fas fa-arrow-circle-left"> </i> </a>
-    <a class="next" onclick="immagineSuccessiva()"> <i class="fas fa-arrow-circle-right"> </i> </a>
-</div>-->
-
 <div id="slider">
     <figure>
         <img src="./immaginiSlider/sustenium_plus_desk-min.jpeg" alt="immagine">
@@ -45,22 +30,14 @@
             <%=c.getNomeCategoria()%>
         </div>
         <% } } %>
-       <!-- <div class="categoria" >
-            Farmaci da Banco
-        </div>
-        <div class="categoria">
-            Cosemtici da Banco
-        </div>
-        <div  class="categoria">
-           Igiene e benessere
-        </div>-->
+
     </div>
 
 </div>
 
 
 
-<div class="info">
+<div class="info-contenuti">
 
 <fieldset>
     <legend>Spediamo Felicità</legend>

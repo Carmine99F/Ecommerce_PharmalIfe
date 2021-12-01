@@ -6,6 +6,7 @@
 viewport-fit:cover serve per evitare lo spazio bianco sui dispositivi apple-->
 <title>${param.title}</title>
 <meta name="description" content="Ecommerce PharmaLife">
+<meta name="theme-color" content="red">
 <link rel="icon" type="image/png" href=""> <!-- mettere il path del logo dentro href in formato png-->
 <meta name="apple-mobile-web-app-capable" content="yes"> <!-- per installare oil sito come se fosse una web app-->
 <meta name="format-detection" content="telephone-no"> <!-- evitare che i browser intrpetrino stringh edi numeri come numeri di telefono-->
@@ -23,6 +24,7 @@ viewport-fit:cover serve per evitare lo spazio bianco sui dispositivi apple-->
      <link rel="stylesheet" href="css/${stile}.css">
  </c:forTokens>
 <script src="https://kit.fontawesome.com/7159358a04.js" crossorigin="anonymous"></script>
+<script src="./js/barraRicerca.js" type="text/javascript" defer></script>
 <c:if test="${not empty param.script}">
 
 </c:if>

@@ -14,23 +14,29 @@
         <jsp:param name="script" value="header,footer"/>
     </jsp:include>
     <script src="js/header.js" type="text/javascript" defer></script>
+    <script src="js/ajaxTableAdmin.js" type="text/javascript" defer></script>
 </head>
 <body>
 <jsp:include page="../default/header.jsp"/>
 
-<!-- <img src="of-medicines-medical-supplies-placed-on-a-blue.jpg" width="700" height="400">-->
+
 <div class="opzione">
     <div class="scelte">
-        <!--   <h2>Scegli un'opzione</h2>-->
-        <ul>
-            <li><a href="ServletAdmin?value=listaProdotti">Lista prodotti </a><i class="fas fa-pills"></i> </li>
+
+        <ul> <!--ServletAdmin?value=listaProdotti-->
+            <li><a  onclick="mostraTabella('prodotti')" >Lista prodotti </a><i class="fas fa-pills"></i> </li>
+            <li><a  onclick="mostraTabella('utenti')">Lista utenti </a> <i class="fas fa-users"></i></li>
+            <li><a href="ServletAdmin?value=statistiche">Statistiche</a><i class="fas fa-chart-pie"></i></li>
             <li><a href="ServletAdmin?value=insertProdotto">Inserisci prodotto </a> <i class="fas fa-pills"></i></li>
-            <li><a href="ServletAdmin?value=insertCategoria">Inserisci categoria </a><i class="fas fa-box-open"></i></li>
-            <li> <a href="ServletAdmin?value=insertMarchio">Inserisci marchio</a><i class="fas fa-business-time"></i></li>                       </li>
-            <li><a href="ServletAdmin?value=listaUtenti">Lista utenti </a> <i class="fas fa-users"></i></li>
             <li><a href="ServletAdmin?value=messaggi">Assistenza utenti </a> <i class="fas fa-comment-alt"></i></li>
         </ul>
     </div>
+    <div   class="tabella">
+        <table id="table">
+
+        </table>
+    </div>
+
 </div>
 <jsp:include page="../default/footer.jsp"/>
 </body>

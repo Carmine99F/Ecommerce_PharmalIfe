@@ -4,8 +4,7 @@ import model.carrello.Carrello;
 import model.utente.Utente;
 
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 public class Ordine {
@@ -13,17 +12,19 @@ public class Ordine {
     private Date dataOrdine;
     private Time ora;
     private Utente utente;
-    private ArrayList<Carrello> carrelli;
+    private Carrello carrello;
+
+
 
     public Ordine() {
     }
 
-    public Ordine(int idOrdine, Date dataOrdine, Time ora, Utente utente, ArrayList<Carrello> carrelli) {
+    public Ordine(int idOrdine, Date dataOrdine, Time ora, Utente utente, Carrello carrello) {
         this.idOrdine = idOrdine;
         this.dataOrdine = dataOrdine;
         this.ora = ora;
         this.utente = utente;
-        this.carrelli = carrelli;
+        this.carrello = carrello;
     }
 
     public int getIdOrdine() {
@@ -35,7 +36,7 @@ public class Ordine {
     }
 
     public Date getDataOrdine() {
-        return dataOrdine;
+        return  dataOrdine;
     }
 
     public void setDataOrdine(Date dataOrdine) {
@@ -58,12 +59,21 @@ public class Ordine {
         this.utente = utente;
     }
 
-    public ArrayList<Carrello> getCarrelli() {
-        return carrelli;
+ //   public ArrayList<Carrello> getCarrelli() {
+  //      return carrelli;
+   // }
+
+    //public void setCarrelli(ArrayList<Carrello> carrelli) {
+      //  this.carrelli = carrelli;
+    //}
+
+
+    public Carrello getCarrello() {
+        return carrello;
     }
 
-    public void setCarrelli(ArrayList<Carrello> carrelli) {
-        this.carrelli = carrelli;
+    public void setCarrello(Carrello carrello) {
+        this.carrello = carrello;
     }
 
     @Override

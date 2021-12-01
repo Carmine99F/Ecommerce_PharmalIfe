@@ -15,10 +15,13 @@
         Info e Assistenza Clienti: (+39) 3920591662 | Spedizioni gratuite per ordini superiori a 69,99€
     </p>
         <div class="logo">
-            <form action="" name="formInputSearch" onsubmit="">
+            <form action="ServletSchedaProdottoSearch" id="formId" method="get" name="formInputSearch"  >
                 <label class="field" for="input" >
-                    <input type="text" name="ricerca" placeholder="Cerca..." >
-                    <button type="submit" name="sumbit" value="sumbit"> <i class="fas fa-search" style="font-size: 17px"></i></button>
+                    <input  list="prod" type="text" id="ricercaId" name="search" placeholder="Cerca..."  onkeyup="ricerca()" autocomplete="off">
+                    <datalist id="prod">
+
+                    </datalist>
+                    <button type="submit" name="sumbit" value="sumbit" onclick="return verifica()"> <i class="fas fa-search" style="font-size: 17px"></i></button>
                 </label>
             </form>
 
@@ -32,13 +35,12 @@
                 <a   href="https://www.facebook.com/pharmalife.ivane.5" class="icone"> <i class="fab fa-facebook-f" style="color: limegreen;font-size: 30px" ></i></a>
                 <a   href="ServletAssistenza" class="icone"> <i class="fas fa-phone-square" style="color: limegreen;font-size: 30px"></i> </a>
                 <a   href="ServletLink?scelta=carrello" class="icone"><i class="fas fa-shopping-cart" style="color: limegreen;font-size: 30px"></i></a>
-                <a  title="Logout" href="ServletMostraPref" class="icone"><i class="far fa-heart" style="color: limegreen;font-size: 30px"></i> </a>
+                <a  title="Preferiti" href="ServletMostraPref" class="icone"><i class="far fa-heart" style="color: limegreen;font-size: 30px"></i> </a>
                 <% if(utente!=null){%>
-                <a  style="order: 6" href="ServletAccessoUtente?value=logout" class="icone"><i class="fas fa-sign-out-alt" style="color: limegreen;font-size: 30px"></i></a>
+                <a  title="Logout"  href="ServletAccessoUtente?value=logout" class="icone"><i class="fas fa-sign-out-alt" style="color: limegreen;font-size: 30px"></i></a>
                 <% }%>
             </div>
         </div>
-
 </header>
 <nav>
     <a href="ServletLink?scelta=home" class="home">Home</a>
@@ -52,18 +54,12 @@
                         <%=categorie.get(i).getNomeCategoria()%>
                     </a>
                     <% } %>
-                   <!-- <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>-->
                 </div>
               <div class="colum due">
                   <% for(int i=(categorie.size()/2)+1;i<categorie.size();i++){    %>
                   <a href="ServletListaProdotti?value=<%=categorie.get(i).getIdCategoria()%>&nomejsp=header">
                       <%=categorie.get(i).getNomeCategoria()%></a>
                   <% } %>
-                  <!--  <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>-->
                 </div>
             </div>
         </div>

@@ -15,25 +15,21 @@ public class ServletAccessoUtente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        HttpSession session= request.getSession();
-       // String email=request.getParameter("emailUser");
-      //  String password=request.getParameter("password");
-
        Utente utente=(Utente) session.getAttribute("utente");
-      String valore=request.getParameter("value");
-     System.out.println(valore);
+       String valore=request.getParameter("value");
+
         switch (valore){
             case "login":
-
                 if (utente==null){
-
                     String email=request.getParameter("emailUser");
                     String password=request.getParameter("password");
                     UtenteDAO utenteDAO=new UtenteDAO();
                     utente=(Utente)utenteDAO.cercaUtentebyEmail(email,password);
-
                     if(utente!=null){
                            if(session.getAttribute("carrello")!=null){
-                               session.removeAttribute("carrello");
+                             //  Carrello carrello=(Carrello) session.getAttribute("carrello");
+                              // utente.setCarrello(carrello);
+                              session.removeAttribute("carrello");
                            }
 
                             session.setAttribute("utente", utente);
@@ -46,9 +42,9 @@ public class ServletAccessoUtente extends HttpServlet {
                     }
 
                 }
-                else {
+              /*  else {
                     response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/index.jsp"));
-                }
+                }*/
                 break;
             case "logout":
                 if(utente!=null){

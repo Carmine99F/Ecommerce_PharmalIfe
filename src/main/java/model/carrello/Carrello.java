@@ -13,7 +13,9 @@ public class Carrello {
     private Utente utente;
     private ArrayList<Prodotto> prodotti;
     private int totaleProdotti;
-    private ArrayList<Ordine> ordini;
+    private double totalePrezzo=0;
+
+    private StringBuilder prodottiCarrello;
 
     public Carrello() {
         prodotti= new ArrayList<>();
@@ -52,6 +54,7 @@ public class Carrello {
 
     public void addProdotto(Prodotto p ){
         prodotti.add(p);
+        totalePrezzo+=p.getPrezzo();
     }
 
     public int getTotaleProdotti() {
@@ -62,12 +65,46 @@ public class Carrello {
         this.totaleProdotti = totaleProdotti;
     }
 
+    public double getTotalePrezzo() {
+        return totalePrezzo;
+    }
+
+    public void sottraiTotale(double prezzo){
+        this.totalePrezzo-=prezzo;
+    }
+    public void setTotalePrezzo(int totalePrezzo) {
+        this.totalePrezzo = totalePrezzo;
+    }
+
+    public StringBuilder prodottiToString(){
+        prodottiCarrello=new StringBuilder();
+        for(Prodotto p : prodotti){
+            prodottiCarrello.append(p.getNome() + ",");
+        }
+        System.out.println("Lista " + prodottiCarrello.toString() );
+        return prodottiCarrello;
+    }
+
+    public void setListaProdottiString(String lista){
+
+        prodottiCarrello=new StringBuilder(lista);
+
+    }
+
+    public StringBuilder getProdottiCarrello() {
+        return prodottiCarrello;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Carrello carrello = (Carrello) o;
         return codiceCarrello == carrello.codiceCarrello;
+    }
+
+    private void acquista(){
+        prodotti.clear();
     }
 
 

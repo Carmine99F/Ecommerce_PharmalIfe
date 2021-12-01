@@ -27,8 +27,6 @@ public class ServletStart extends HttpServlet {
         ArrayList<Marchio> marchi= marchioDAO.doRetraiveByAllMarchi();
         getServletContext().setAttribute("marchi",marchi);
         getServletContext().setAttribute("categorie",categorie);
-        System.out.println("size " + marchi.size());
-
     }
 
     @Override

@@ -74,6 +74,13 @@ public class ServletLink extends HttpServlet {
                 break;
             case "carrello" :
                 pagina="WEB-INF/pagine/carrello.jsp";
+                break;
+            case "indirizzo":
+                pagina="WEB-INF/pagine/updateIndirizzo.jsp";
+                break;
+            case "ordini" :
+                pagina="ServletMostraOrdini";
+                break;
           /*  default:pagina="webapp/index.jsp";
                 break;*/
         }

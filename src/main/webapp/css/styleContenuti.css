@@ -3,7 +3,7 @@
 
 }*/
 
-.info{
+.info-contenuti{
     margin-top: 20px;
     display: flex;
     flex-basis: 100%;
@@ -131,8 +131,6 @@ overflow: hidden;
 #slider figure{
     position: relative;
     height: 90%;
-    background-color: blue;
-
     width: 500%;
     margin: 0;
     left: 0;
@@ -167,5 +165,8 @@ h3 {
 
     fieldset{
         width: 80%;
+    }
+    .categoria{
+        flex-basis: 70%;
     }
 }

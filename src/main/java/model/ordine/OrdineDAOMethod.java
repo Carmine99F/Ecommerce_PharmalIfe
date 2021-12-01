@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface OrdineDAOMethod {
 
-    public Optional<Ordine> cercaOrdine(int idOrdine);
+    public Ordine cercaOrdine(int idOrdine);
     public void deleteOrdine(int idOrdine);
     public void insertCarrello(Ordine o);
     public void updateOrdine(Ordine o, int idOrdine);

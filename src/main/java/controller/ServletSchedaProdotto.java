@@ -29,6 +29,7 @@ public class ServletSchedaProdotto extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int codiceProdotto=Integer.parseInt(request.getParameter("value"));
+        System.out.println("codice  " + codiceProdotto);
         ProdottoDAO prodottoDAO= new ProdottoDAO();
         Prodotto prodotto=prodottoDAO.cercaProdotto(codiceProdotto);
         request.setAttribute("prodotto",prodotto);

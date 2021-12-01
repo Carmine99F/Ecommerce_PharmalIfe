@@ -7,6 +7,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "ServletUpdateUtente", value = "/ServletUpdateUtente")
 public class ServletUpdateUtente extends HttpServlet {
@@ -15,6 +17,7 @@ public class ServletUpdateUtente extends HttpServlet {
 
         String codiceFiscale=request.getParameter("codiceFiscale");
         String nomeUtente=request.getParameter("nome");
+        System.out.println("Nome utente  "+ nomeUtente);
         String cognomeUtente=request.getParameter("cognome");
         String email=request.getParameter("email");
         String password=request.getParameter("password");
@@ -24,20 +27,43 @@ public class ServletUpdateUtente extends HttpServlet {
         utente.setNome(nomeUtente);
         utente.setCognome(cognomeUtente);
         utente.setEmail(email);
-        utente.criptPassword(nuovaPassword);
+        utente.criptPassword(password);
+        //utente.criptPassword(nuovaPassword);
 
         UtenteDAO utenteDAO= new UtenteDAO();
         HttpSession session= request.getSession();
+
+        Utente utente1=utenteDAO.cercaUtente(codiceFiscale);
+
+        Pattern pattern = Pattern.compile("^((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,20})$");
+        Matcher matcher = pattern.matcher(nuovaPassword);
         String up="";
-        if(utenteDAO.updateUtente(utente)){
-          up="Dati Aggiornati Correttamente";
-            Utente u=(Utente) utenteDAO.cercaUtente(utente.getCodiceFiscale());
-            System.out.println("Ute" + u.getEmail());
-            if(utente!=null){
-                session.setAttribute("utente",u);
+
+        if (!matcher.matches()) {
+            up="La nuova password non rispetta il formato del pattern: deve contenere almeno una lettera minuscola, una maiuscola e un numero";
+        } else
+        if (utente1 != null) {
+
+            if (utente1.getPassword().equals(utente.getPassword())) {
+                utente.criptPassword(nuovaPassword);
+
+                if (password.equals(nuovaPassword)) {
+                    up = "La nuova password deve essere diversa da quella precedente";
+                    System.out.println("goooooooollllllll");
+                } else {
+
+                    if (utenteDAO.updateUtente(utente)) {
+                        up = "Dati Aggiornati Correttamente";
+                        Utente u = (Utente) utenteDAO.cercaUtente(utente.getCodiceFiscale());
+
+                        if (utente != null) {
+                            session.setAttribute("utente", u);
+                        }
+                    }
+                }
+            } else {
+                up = "La password non corrisponde con quella dell'utente loggato";
             }
-        }else{
-            up="Errore durante l'Aggiornamento";
         }
 
         request.setAttribute("update",up);

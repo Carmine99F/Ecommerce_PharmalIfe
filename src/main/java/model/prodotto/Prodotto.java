@@ -111,6 +111,9 @@ public class Prodotto {
         this.descrrizione = descrrizione;
     }
 
+    public void setPrezzoQuantita(int quantita){
+        this.prezzo*=quantita;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

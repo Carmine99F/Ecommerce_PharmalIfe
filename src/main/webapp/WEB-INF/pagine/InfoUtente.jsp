@@ -28,7 +28,7 @@
 </head>
 <body>
 <jsp:include page="default/header.jsp"/>
-
+<h1 style="padding: 10px; color: #009fe3;">INFORMAZIONI</h1>
 <% if(update!=null){ %>
 <h3><%=update%></h3>
 <% }  %>
@@ -41,31 +41,31 @@
 
             <div class="input-info">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome"  name="nome" value="<%=utente.getNome()%>" disabled>
+                <input type="text" id="nome"  name="nome" value="<%=utente.getNome()%>" required>
             </div>
             <div class="input-info">
                 <label for="cognome">Cognome</label>
-                <input type="text" id="cognome"  name="cognome" value="<%=utente.getCognome()%>" disabled>
+                <input type="text" id="cognome"  name="cognome" value="<%=utente.getCognome()%>" required >
             </div>
             <div class="input-info">
                 <label for="email">Email</label>
-                <input type="text" id="email"  name="email" value="<%=utente.getEmail()%>" disabled>
+                <input type="text" id="email"  name="email" value="<%=utente.getEmail()%>" required >
             </div>
             <div class="input-info">
                 <label for="password">Password</label>
-                <input   type="password" id="password" name="password" value="" onClick="showPwd('password', this)" required>
-                <i  id="psw" class="fas fa-eye-slash"></i>
+                <input   type="password" id="password" name="password" value="" required>
+                <i  id="psw" class="fas fa-eye-slash" onClick="showPwd('password', this)"></i>
             </div>
             <div class="input-info">
                 <label for="newPassword">Nuova Password</label>
                 <input type="password" id="newPassword"  name="newPassword" value="" required>
-                <i id="pswRepeat" class="fas fa-eye" onClick="showPwd('newPassword', this)" ></i>
+                <i id="pswRepeat" class="fas fa-eye-slash" onClick="showPwd('newPassword', this)" ></i>
             </div>
         </div>
         <div class="info">
             <div class="consenso">
                 <input type="checkbox" id="check" value="Acconsento">
-                <label  for="check">Acconsento alla <a href="#">Terms & Privacy</a> di pHarmaLife.</label>
+                <label  for="check">Acconsento alla <a href="ServletLink?scelta=termini">Terms & Privacy</a> di pHarmaLife.</label>
             </div>
             <input type="hidden"  name="codiceFiscale" value="<%=utente.getCodiceFiscale()%>">
             <input type="submit" value="Salva">

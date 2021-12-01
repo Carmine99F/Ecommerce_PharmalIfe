@@ -27,12 +27,12 @@
     </div>
 
     <div class="flex-item">
-        <a href=""><i class="fas fa-map-marker-alt" ></i></a><br>
-        <p>AGGIUNGI INDIRIZZO</p>
+        <a href="ServletLink?scelta=indirizzo"><i class="fas fa-map-marker-alt" ></i></a><br>
+        <p>MODIFICA INDIRIZZO</p>
     </div>
 
     <div class="flex-item">
-        <a href=""><i class="far fa-calendar-alt" ></i></a><br>
+        <a href="ServletMostraOrdini"><i class="far fa-calendar-alt" ></i></a><br>
         <p>CRONOLOGIA ORDINI E DETTAGLI</p>
     </div>
 
@@ -47,7 +47,7 @@
     </div>
 
     <div class="flex-item">
-        <a href=""> <i class="fas fa-portrait" ></i></a><br>
+        <a href="" onclick="print()"> <i class="fas fa-portrait" ></i></a><br>
         <p>I MIEI DATI PERSONALI</p>
     </div>
 
